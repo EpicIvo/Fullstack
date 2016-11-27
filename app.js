@@ -20,12 +20,17 @@ app.use(bodyParser.json());
 
 bookRouter = require('./Routes/bookRoutes')(Book);
 
+app.use(function (req, res) {
+   res.header("Access-Controll-Allow-Origin", "*") ;
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+});
+
 app.use('/api/books', bookRouter);
 app.get('/', function (req, res) {
     res.send('welcome to my API!');
 });
 app.listen(port, function () {
-    console.log('Gulp is running my app on  PORT: ' + port);
+    console.log('Gulp is running my app on PORT: ' + port);
 });
 
 module.exports = app;

@@ -1,6 +1,5 @@
 var express = require('express');
 
-
 var routes = function (Book) {
     var bookRouter = express.Router();
 
