@@ -7,11 +7,11 @@ var db;
 console.log('Hello');
 if(process.env.ENV == 'Test'){
 
-    db = mongoose.connect('mongodb://fullstack-s.herokuapp.com/bookAPI_test');
+    db = mongoose.connect('mongodb://ds111718.mlab.com:11718/fullstack');
 }
 
 else{
-    db= mongoose.connect('mongodb://fullstack-s.herokuapp.com/bookAPI');
+    db= mongoose.connect('mongodb://ds111718.mlab.com:11718/fullstack');
 }
 
 var Book = require('./models/bookModel');
