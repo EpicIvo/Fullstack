@@ -24,7 +24,7 @@ app.use(function (req, res, next) {
     res.header("Connection", "Keep-Alive");
     res.header("Content-type", "application/json");
 
-    req.header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
+    req.header("Accept", "application/json");
     next();
 });
 
