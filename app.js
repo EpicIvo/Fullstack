@@ -25,11 +25,6 @@ app.use(function (req, res, next) {
     res.header("Content-type", "application/json");
 
     req.header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
-    // req.header("Accept-Encoding", "gzip, deflate, sdch");
-    // req.header("Accept-Language", "nl-NL,nl;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2");
-    // req.header("Cache-Control", "max-age=0");
-    // req.header("Connection", "Keep-Alive");
-    // req.header("Host", "fullstack-s.herokuapp.com");
     next();
 });
 
