@@ -32,6 +32,15 @@ app.use(bodyParser.json({
 
 bookRouter = require('./Routes/bookRoutes')(Book);
 
+app.use(function (req, res, next) {
+   if (req.accepts('json')){
+       res.send(200);
+       next();
+   }else{
+       res.status(500).send(err);
+   }
+});
+
 app.use('/api/books', bookRouter);
 app.get('/', function (req, res) {
     res.send('welcome to my <a href="http://localhost:8080/api/books">API!</a>');

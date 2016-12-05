@@ -9,7 +9,6 @@ var routes = function (Book) {
         .get(bookController.get)
 
         .options(function (err, res) {
-            res.header('Accept', 'application/json');
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS,');
             res.send(200)
         });
