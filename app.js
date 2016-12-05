@@ -34,7 +34,7 @@ bookRouter = require('./Routes/bookRoutes')(Book);
 
 app.use(function (req, res, next) {
     res.header('Acces-Control-Allow-Origin', '*');
-    res.header('Acces-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Acces-Control-Allow-Methods', 'GET,POST,OPTIONS');
     res.header('Acces-Control-Allow-Origin', 'Content-type');
     next();
 });
