@@ -1,6 +1,5 @@
 var express = require('express');
 
-if (req.accepts('json')){
 var routes = function (Book) {
     var bookRouter = express.Router();
 
@@ -10,6 +9,9 @@ var routes = function (Book) {
         .get(bookController.get)
 
         .options(function (err, res) {
+            if (!req.accepts('json')) {
+                return res.status(400).json({message: 'Accepted format is application/json'});
+            }
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS,');
             res.send(200);
         });
@@ -75,9 +77,6 @@ var routes = function (Book) {
         });
     return bookRouter;
 };
-}else{
-    res.send(500);
-}
 
 
 module.exports = routes;
