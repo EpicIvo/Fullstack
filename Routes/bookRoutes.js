@@ -9,7 +9,7 @@ var routes = function (Book) {
         .get(bookController.get)
 
         .options(function (err, res) {
-            res.set('Content-Type', 'x-www-form-urlencoded');
+            res.set('Accept', 'x-www-form-urlencoded');
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS,');
             res.send(200);
         });
