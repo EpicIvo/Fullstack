@@ -10,6 +10,7 @@ var routes = function (Book) {
 
         .options(function (err, res) {
             // res.set('Accept', 'x-www-form-urlencoded');
+            req.accepts('json');
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS,');
             res.send(200);
         });
