@@ -6,7 +6,12 @@ var routes = function (Book) {
     var bookController = require('../Controllers/bookController')(Book);
     bookRouter.route('/')
         .post(bookController.post)
-        .get(bookController.get);
+        .get(bookController.get)
+
+        .options(function (err, res) {
+            res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS,');
+            res.send(200)
+        });
 
     bookRouter.use('/:bookId', function (req, res, next) {
         Book.findById(req.params.bookId, function (err, book) {
