@@ -1,5 +1,6 @@
 var express = require('express');
 
+if (req.accepts('json')){
 var routes = function (Book) {
     var bookRouter = express.Router();
 
@@ -10,11 +11,7 @@ var routes = function (Book) {
 
         .options(function (err, res) {
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS,');
-            if (req.accepts('json')){
-                res.send(200);
-            }else{
-                res.send(500);
-            }
+            res.send(200);
         });
 
     bookRouter.use('/:bookId', function (req, res, next) {
@@ -78,5 +75,9 @@ var routes = function (Book) {
         });
     return bookRouter;
 };
+}else{
+    res.send(500);
+}
+
 
 module.exports = routes;
