@@ -9,9 +9,9 @@ var routes = function (Book) {
         .get(bookController.get)
 
         .options(function (err, res) {
-            res.set('Content-Type', 'application/json');
+            res.set('Content-Type', 'x-www-form-urlencoded');
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS,');
-            res.send(200)
+            res.send(200);
         });
 
     bookRouter.use('/:bookId', function (req, res, next) {
