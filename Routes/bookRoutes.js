@@ -12,6 +12,8 @@ var routes = function (Book) {
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS,');
             if (req.accepts('json')){
                 res.send(200);
+            }else{
+                res.send(500);
             }
         });
 
