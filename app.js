@@ -32,10 +32,10 @@ app.use(bodyParser.json({
 
 bookRouter = require('./Routes/bookRoutes')(Book);
 
-app.use(function (req, res, next) {
-    req.accepts('json');
-    next();
-});
+// app.use(function (req, res, next) {
+//     req.accepts('json');
+//     next();
+// });
 
 app.use('/api/books', bookRouter);
 app.get('/', function (req, res) {
