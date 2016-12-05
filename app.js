@@ -3,7 +3,15 @@ var express = require('express'),
     bodyParser = require('body-parser');
 
 var db;
-console.log('Hello');
+// LOCAL
+// if (process.env.ENV == 'Test') {
+//     db = mongoose.connect('mongodb://localhost/bookAPI_test');
+// }
+// else {
+//     db = mongoose.connect('mongodb://localhost/bookAPI');
+// }
+
+//LIVE
 if (process.env.ENV == 'Test') {
     db = mongoose.connect('mongodb://ivo:password@ds111718.mlab.com:11718/fullstack');
 }
@@ -13,16 +21,20 @@ else {
 
 var Book = require('./models/bookModel');
 var app = express();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 4005;
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(bodyParser.json({
+    type: function() {
+        return true;
+    }
+}));
 
 bookRouter = require('./Routes/bookRoutes')(Book);
-
-app.use(function (req, res, next) {
+app.options(function (req, res, next) {
     res.header("Connection", "Keep-Alive");
     res.header("Content-type", "application/json");
+    req.header("application/json");
     next();
 });
 

@@ -1,6 +1,13 @@
+var ObjectID = require('mongodb').ObjectID;
+
 var bookController = function (Book) {
     var post = function (req, res) {
-        var book = new Book(req.body);
+        var objectId = new ObjectID();
+        var book = new Book();
+        book._id = objectId;
+        book.title = req.body.title;
+        book.genre = req.body.genre;
+        book.author = req.body.author;
         if (!req.body.title) {
             res.status(400);
             res.send('Title is required');
@@ -23,8 +30,8 @@ var bookController = function (Book) {
                 var returnBooks = [];
                 books.forEach(function (element, index, array) {
                    var newBook = element.toJSON();
-                   newBook.links = {};
-                   newBook.links.self = 'http://' + req.headers.host + '/api/books/' + newBook._id;
+                   newBook._links = {};
+                   newBook._links.self = 'http://' + req.headers.host + '/api/books/' + newBook._id;
                    returnBooks.push(newBook);
                 });
                 res.json(returnBooks);

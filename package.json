@@ -4,21 +4,23 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.12.0",
+    "bson": "^0.5.7",
     "express": "^4.11.2",
     "gulp": "^3.9.1",
+    "gulp-mocha": "^2.0.0",
     "gulp-nodemon": "^1.0.5",
     "mongoose": "^3.8.24",
-    "body-parser": "^1.12.0",
-    "sinon": "^1.14.0",
     "should": "^5.2.0",
-    "gulp-mocha": "^2.0.0"
+    "sinon": "^1.14.0"
   },
   "devDependencies": {
     "gulp-env": "^0.2.0",
     "supertest": "^0.15.0"
   },
   "scripts": {
-    "start" : "node app.js",
+    "start": "node app.js",
+    "http": "http-server -p 3000 -a 127.0.0.1 -o",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
