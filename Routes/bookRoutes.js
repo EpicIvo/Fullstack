@@ -11,9 +11,10 @@ var routes = function (Book) {
         .options(function (err, res) {
             if (!req.accepts('json')) {
                 return res.status(400).json({message: 'Accepted format is application/json'});
+            }else {
+                res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS,');
+                res.send(200);
             }
-            res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS,');
-            res.send(200);
         });
 
     bookRouter.use('/:bookId', function (req, res, next) {
