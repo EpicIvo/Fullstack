@@ -31,16 +31,17 @@ app.use(bodyParser.json({
 }));
 
 bookRouter = require('./Routes/bookRoutes')(Book);
-app.options(function (req, res, next) {
-    res.header("Connection", "Keep-Alive");
-    res.header("Content-type", "application/json");
-    req.header("application/json");
+
+app.use(function (req, res, next) {
+    res.header('Acces-Control-Allow-Origin', '*');
+    res.header('Acces-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Acces-Control-Allow-Origin', 'Content-type');
     next();
 });
 
 app.use('/api/books', bookRouter);
 app.get('/', function (req, res) {
-    res.send('welcome to my API!');
+    res.send('welcome to my <a href="http://localhost:8080/api/books">API!</a>');
 });
 app.listen(port, function () {
     console.log('Gulp is running my app on PORT: ' + port);
