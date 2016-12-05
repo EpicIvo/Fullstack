@@ -33,9 +33,9 @@ app.use(bodyParser.json({
 bookRouter = require('./Routes/bookRoutes')(Book);
 
 app.use(function (req, res, next) {
-    res.header('Acces-Control-Allow-Origin', '*');
-    res.header('Acces-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
-    res.header('Acces-Control-Allow-Origin', 'Content-type');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Origin', 'Content-type');
     next();
 });
 
