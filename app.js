@@ -32,7 +32,7 @@ app.use(bodyParser.json({
 
 bookRouter = require('./Routes/bookRoutes')(Book);
 
-app.use('*', function (req, res, next) {
+app.use(function (req, res, next) {
         if (!req.accepts('json')) {
             res.status(400).json({message: 'Accepted format is application/json'});
             next();
