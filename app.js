@@ -32,16 +32,16 @@ app.use(bodyParser.json({
 
 bookRouter = require('./Routes/bookRoutes')(Book);
 
-app.use('*', function (req, res, next) {
-    if (req.method == 'OPTIONS') {
-        if (!req.accepts('json')) {
-            return res.status(400).json({message: 'Accepted format is application/json'});
-        } else {
-            res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
-            res.status(200).send();
-        }
-    }
-});
+// app.use('*', function (req, res, next) {
+//     if (req.method == 'OPTIONS') {
+//         if (!req.accepts('json')) {
+//             return res.status(400).json({message: 'Accepted format is application/json'});
+//         } else {
+//             res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+//             res.status(200).send();
+//         }
+//     }
+// });
 
 app.use('/api/books', bookRouter);
 app.get('/', function (req, res) {
