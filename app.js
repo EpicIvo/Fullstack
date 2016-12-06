@@ -32,10 +32,6 @@ app.use(bodyParser.json({
 
 bookRouter = require('./Routes/bookRoutes')(Book);
 
-if (!req.accepts('json')) {
-    res.status(400).json({message: 'Accepted format is application/json'});
-}
-
 app.use('/api/books', bookRouter);
 app.get('/', function (req, res) {
     res.send('welcome to my <a href="https://fullstack-s.herokuapp.com/api/books">API!</a>');
