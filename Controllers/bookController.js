@@ -4,10 +4,10 @@ var bookController = function (Book) {
     var post = function (req, res) {
         var objectId = new ObjectID();
         var book = new Book();
-        book._id = objectId;
-        book.title = req.body.title;
-        book.genre = req.body.genre;
-        book.author = req.body.author;
+        book.items._id = objectId;
+        book.items.title = req.body.title;
+        book.items.genre = req.body.genre;
+        book.items.author = req.body.author;
         if (!req.body.title) {
             res.status(400);
             res.send('Title is required');
@@ -24,18 +24,20 @@ var bookController = function (Book) {
             query.genre = req.query.genre;
         }
         Book.find(query, function (err, books) {
-            if (err)
+            if (err) {
                 res.status(500).send(err);
-            else
+            }
+            else {
                 var returnBooks = [];
+            }
+            returnBooks._links.self = 'http://' + req.headers.host + '/api/books/';
+            returnBooks.pagination.pages = 4;
             books.forEach(function (element, index, array) {
                 var newBook = element.toJSON();
-                newBook._links = {};
-                newBook._links.self = 'http://' + req.headers.host + '/api/books/' + newBook._id;
+                newBook.items._links = {};
+                newBook.items._links.self = 'http://' + req.headers.host + '/api/books/' + newBook._id;
                 returnBooks.push(newBook);
             });
-                newBook.pagination = {};
-                newBook.pagination.pages = returnBooks.length;
             res.json(returnBooks);
         });
     };
