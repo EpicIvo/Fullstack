@@ -23,15 +23,23 @@ var Book = require('./models/bookModel');
 var app = express();
 var port = process.env.PORT || 4005;
 
-//app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({
     type: function () {
         return true;
     }
 }));
 
-bookRouter = require('./Routes/bookRoutes')(Book);
+app.use(function (req, res, next) {
+   if(!req.accepts('json')){
+       res.status(400);
+       res.send("FUCKED UP M8");
+   }else{
+       next();
+   }
+});
 
+bookRouter = require('./Routes/bookRoutes')(Book);
 app.use('/api/books', bookRouter);
 app.get('/', function (req, res) {
     res.send('welcome to my <a href="https://fullstack-s.herokuapp.com/api/books">API!</a>');
