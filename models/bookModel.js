@@ -11,7 +11,7 @@ var bookModel = new Schema({
         read: {type: Boolean, default: false}
     },
     _links: {},
-    pagination: {},
+    pagination: {}
 });
 
 module.exports = mongoose.model('Book', bookModel);
