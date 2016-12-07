@@ -30,10 +30,6 @@ var bookController = function (Book) {
             else {
                 var returnBooks = [];
             }
-            var meta = {};
-            meta._links.self = 'http://' + req.headers.host + '/api/books/';
-            meta.pagination.pages = 4;
-            returnBooks.push(meta);
             books.forEach(function (element, index, array) {
                 var newBook = element.toJSON();
                 newBook.items._links = {};
