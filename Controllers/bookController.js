@@ -4,7 +4,7 @@ var bookController = function (Book) {
     var post = function (req, res) {
         if (!req.accepts('json')) {
             res.status(400);
-            res.json({message: 'Application/json format is required'});
+            res.json('Application/json format is required');
         } else {
             var objectId = new ObjectID();
             var book = new Book();
