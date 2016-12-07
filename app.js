@@ -25,9 +25,7 @@ var port = process.env.PORT || 4005;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({
-    type: function () {
-        return true;
-    }
+    type: 'application/*+json'
 }));
 
 bookRouter = require('./Routes/bookRoutes')(Book);
