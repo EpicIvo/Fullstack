@@ -11,9 +11,6 @@ var routes = function (Book) {
         .options(function (err, res) {
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS,');
             res.send(200);
-            if (!req.accepts('json')) {
-                res.status(400).json({message: 'Accepted format is application/json'});
-            }
         });
 
     bookRouter.use('/:bookId', function (req, res, next) {

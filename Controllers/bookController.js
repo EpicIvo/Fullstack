@@ -8,6 +8,9 @@ var bookController = function (Book) {
         book.title = req.body.title;
         book.genre = req.body.genre;
         book.author = req.body.author;
+        if (!req.accepts('json')) {
+            res.status(400).json({message: 'Accepted format is application/json'});
+        }
         if (!req.body.title) {
             res.status(400);
             res.send('Title is required');
