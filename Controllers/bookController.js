@@ -34,6 +34,8 @@ var bookController = function (Book) {
                 newBook._links.self = 'http://' + req.headers.host + '/api/books/' + newBook._id;
                 returnBooks.push(newBook);
             });
+                newBook.pagination = {};
+                newBook.pagination.pages = returnBooks.length;
             res.json(returnBooks);
         });
     };
