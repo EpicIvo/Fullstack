@@ -2,25 +2,20 @@ var ObjectID = require('mongodb').ObjectID;
 
 var bookController = function (Book) {
     var post = function (req, res) {
-        if (!req.accepts('json')) {
+        var objectId = new ObjectID();
+        var book = new Book();
+        book._id = objectId;
+        book.title = req.body.title;
+        book.genre = req.body.genre;
+        book.author = req.body.author;
+        if (!req.body.title) {
             res.status(400);
-            res.json('Application/json format is required');
-        } else {
-            var objectId = new ObjectID();
-            var book = new Book();
-            book._id = objectId;
-            book.title = req.body.title;
-            book.genre = req.body.genre;
-            book.author = req.body.author;
-            if (!req.body.title) {
-                res.status(400);
-                res.send('Title is required');
-            }
-            else {
-                book.save();
-                res.status(201);
-                res.send(book);
-            }
+            res.send('Title is required');
+        }
+        else {
+            book.save();
+            res.status(201);
+            res.send(book);
         }
     };
     var get = function (req, res) {
