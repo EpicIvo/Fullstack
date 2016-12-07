@@ -10,7 +10,7 @@ var routes = function (Book) {
 
         .options(function (err, res) {
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS,');
-            res.header('Content-type', 'application/json');
+            res.header('Accept', 'application/json');
             res.send(200);
         });
 
