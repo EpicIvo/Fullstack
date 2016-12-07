@@ -30,8 +30,8 @@ var bookController = function (Book) {
             else {
                 var returnBooks = [];
             }
-            returnBooks._links.self = 'http://' + req.headers.host + '/api/books/';
-            returnBooks.pagination.pages = 4;
+            // returnBooks._links.self = 'http://' + req.headers.host + '/api/books/';
+            // returnBooks.pagination.pages = 4;
             books.forEach(function (element, index, array) {
                 var newBook = element.toJSON();
                 newBook.items._links = {};
