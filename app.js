@@ -23,9 +23,11 @@ var Book = require('./models/bookModel');
 var app = express();
 var port = process.env.PORT || 4005;
 
-app.use(bodyParser.urlencoded({extended: true}));
+//app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({
-    type: 'application/*+json'
+    type: function () {
+        return true;
+    }
 }));
 
 bookRouter = require('./Routes/bookRoutes')(Book);
