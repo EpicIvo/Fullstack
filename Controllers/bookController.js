@@ -2,9 +2,9 @@ var ObjectID = require('mongodb').ObjectID;
 
 var bookController = function (Book) {
     var post = function (req, res) {
-        if (req.accepts('json')) {
+        if (!req.accepts('json')) {
             res.status(400);
-            res.send('Application/json format is required');
+            res.json({message: 'Application/json format is required'});
         } else {
             var objectId = new ObjectID();
             var book = new Book();
