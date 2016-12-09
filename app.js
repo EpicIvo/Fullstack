@@ -24,18 +24,19 @@ var app = express();
 var port = process.env.PORT || 4005;
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json(
-    function () {
+app.use(bodyParser.json({
+    type: function () {
         return true;
     }
-));
+}));
 
 app.use(function (req, res, next) {
-   if(!req.accepts('json')) {
+   if(!req.accepts('json')){
        res.status(400);
-       return res.send("Only json is accepted");
+       res.send("Only json is accepted");
+   }else{
+       next();
    }
-   next();
 });
 
 bookRouter = require('./Routes/bookRoutes')(Book);
