@@ -7,16 +7,15 @@ var bookController = function (Book) {
         book.title = req.body.title;
 
         if (book.title == null || book.author == null || book.genre == null) {
-            console.log('not sent');
-            res.status(400);
-            res.send('Empty fields are not allowed');
+            return res.status(400).send("Keine empty fields BITTE!");
         }
-        else {
-            console.log('title: ' + book.title);
-            book.save();
-            res.status(201);
-            res.json(book);
-        }
+
+        book.save(function (err) {
+            if (err) {
+                console.log(err);
+            }
+            return res.status(201).json({'res': 'created successfully'});
+        });
     };
     var get = function (req, res) {
         var EpicResponseObject = {
