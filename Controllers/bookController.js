@@ -2,21 +2,21 @@ var bookController = function (Book) {
     var post = function (req, res) {
         var book = new Book();
 
-        if (req.body.title !== null || req.body.author !== null || req.body.genre !== null) {
+        book.author = req.body.author;
+        book.genre = req.body.genre;
+        book.title = req.body.title;
+
+        if (book.title !== null || book.author !== null || book.genre !== null) {
             console.log('not sent');
             res.status(400);
             res.send('Empty fields are not allowed');
         }
         else {
-            console.log('title: ' + req.body.title);
+            console.log('title: ' + book.title);
             book.save();
             res.status(201);
             res.json(book);
         }
-
-        book.author = req.body.author;
-        book.genre = req.body.genre;
-        book.title = req.body.title;
     };
     var get = function (req, res) {
         var EpicResponseObject = {
