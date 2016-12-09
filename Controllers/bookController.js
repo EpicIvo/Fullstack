@@ -10,7 +10,7 @@ var bookController = function (Book) {
             res.send('Empty fields are not allowed');
         }
         else {
-            console.log(req.body);
+            console.log('title: ' + req.body.title);
             book.save();
             res.status(201);
             res.send(book);
