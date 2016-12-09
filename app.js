@@ -24,7 +24,11 @@ var app = express();
 var port = process.env.PORT || 4005;
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(bodyParser.json(
+    function () {
+        return true;
+    }
+));
 
 app.use(function (req, res, next) {
    if(!req.accepts('json')) {
