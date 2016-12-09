@@ -6,7 +6,7 @@ var bookController = function (Book) {
         book.title = req.body.title;
         if (!req.body.title || !req.body.genre || !req.body.author) {
             res.status(400);
-            res.send('Title is required');
+            res.send('Empty fields are not allowed');
         }
         else {
             book.save();
@@ -18,7 +18,7 @@ var bookController = function (Book) {
         var EpicResponseObject = {
             items: [],
             _links: {},
-            vagination: {}
+            pagination: {}
         };
         var query = {};
         if (req.query.genre) {
