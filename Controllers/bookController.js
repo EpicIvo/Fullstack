@@ -6,7 +6,7 @@ var bookController = function (Book) {
         book.genre = req.body.genre;
         book.title = req.body.title;
 
-        if (book.title !== null || book.author !== null || book.genre !== null) {
+        if (book.title === null || book.author === null || book.genre === null) {
             console.log('not sent');
             res.status(400);
             res.send('Empty fields are not allowed');
