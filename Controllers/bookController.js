@@ -10,7 +10,7 @@ var bookController = function (Book) {
             res.send('Empty fields are not allowed');
         }
         else {
-            console.log('sent');
+            console.log(req.body);
             book.save();
             res.status(201);
             res.send(book);
@@ -40,7 +40,7 @@ var bookController = function (Book) {
             // Commence links
 
 
-            // Initiate vagination
+            // Initiate pagination
 
             res.json(EpicResponseObject);
         });
