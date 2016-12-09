@@ -5,10 +5,12 @@ var bookController = function (Book) {
         book.genre = req.body.genre;
         book.title = req.body.title;
         if (!req.body.title) {
+            console.log('not sent');
             res.status(400);
             res.send('Empty fields are not allowed');
         }
         else {
+            console.log('sent');
             book.save();
             res.status(201);
             res.send(book);
