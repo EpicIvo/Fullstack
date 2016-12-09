@@ -4,6 +4,7 @@ var bookController = function (Book) {
     var post = function (req, res) {
         var objectId = new ObjectID();
         var book = new Book();
+        book.items = [];
         book.items.push({
             _id: objectId,
             author: req.body.author,
