@@ -5,8 +5,7 @@ var bookModel = new Schema({
     _id: {type: String},
     title: String,
     author: String,
-    genre: String,
-    read: {type: Boolean, default: false}
+    genre: String
 });
 
 module.exports = mongoose.model('Book', bookModel);
