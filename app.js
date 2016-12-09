@@ -3,7 +3,7 @@ var express = require('express'),
     bodyParser = require('body-parser');
 
 var db;
-// LOCAL
+//LOCAL
 // if (process.env.ENV == 'Test') {
 //     db = mongoose.connect('mongodb://localhost/bookAPI_test');
 // }
@@ -33,7 +33,7 @@ app.use(bodyParser.json({
 app.use(function (req, res, next) {
    if(!req.accepts('json')){
        res.status(400);
-       res.send("FUCKED UP M8");
+       res.send("Only json is accepted");
    }else{
        next();
    }

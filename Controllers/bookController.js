@@ -4,10 +4,12 @@ var bookController = function (Book) {
     var post = function (req, res) {
         var objectId = new ObjectID();
         var book = new Book();
-        book.items._id = objectId;
-        book.items.title = req.body.title;
-        book.items.genre = req.body.genre;
-        book.items.author = req.body.author;
+        book.items.push({
+            _id: objectId,
+            author: req.body.author,
+            genre: req.body.genre,
+            title: req.body.title
+        });
         if (!req.body.title) {
             res.status(400);
             res.send('Title is required');
@@ -19,11 +21,14 @@ var bookController = function (Book) {
         }
     };
     var get = function (req, res) {
+        var currentPage = req.query.currentPage;
+        var pageSize = req.query.pageSize;
+
         var query = {};
         if (req.query.genre) {
             query.genre = req.query.genre;
         }
-        Book.find(query, function (err, books) {
+        Book.find(query, {}, {limit: 1}, function (err, books) {
             if (err) {
                 res.status(500).send(err);
             }
