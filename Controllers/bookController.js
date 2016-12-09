@@ -4,7 +4,7 @@ var bookController = function (Book) {
         book.author = req.body.author;
         book.genre = req.body.genre;
         book.title = req.body.title;
-        if (!req.body.title || !req.body.genre || !req.body.author) {
+        if (!req.body.title) {
             res.status(400);
             res.send('Empty fields are not allowed');
         }
