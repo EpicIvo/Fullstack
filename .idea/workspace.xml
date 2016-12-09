@@ -4,7 +4,6 @@
     <list default="true" id="8c798000-4822-424e-9341-0cb063c70920" name="Default" comment="Changed Controller habitat">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/bookController.js" afterPath="$PROJECT_DIR$/Controllers/bookController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -48,8 +47,8 @@
       <file leaf-file-name="bookController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Controllers/bookController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+            <state relative-caret-position="120">
+              <caret line="8" column="71" lean-forward="false" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -325,12 +324,12 @@
       <workItem from="1481142473571" duration="1806000" />
       <workItem from="1481197039424" duration="594000" />
       <workItem from="1481260099048" duration="4718000" />
-      <workItem from="1481287351939" duration="8031000" />
+      <workItem from="1481287351939" duration="8127000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74178000" />
+    <option name="totallyTimeSpent" value="74274000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -774,8 +773,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/bookController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        <state relative-caret-position="120">
+          <caret line="8" column="71" lean-forward="false" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
           <folding />
         </state>
       </provider>
