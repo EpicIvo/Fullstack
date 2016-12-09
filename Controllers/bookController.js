@@ -1,10 +1,8 @@
 var bookController = function (Book) {
     var post = function (req, res) {
         var book = new Book();
-        book.author = req.body.author;
-        book.genre = req.body.genre;
-        book.title = req.body.title;
-        if (!req.body.title) {
+
+        if (req.body.title !== null || req.body.author !== null || req.body.genre !== null) {
             console.log('not sent');
             res.status(400);
             res.send('Empty fields are not allowed');
@@ -15,6 +13,10 @@ var bookController = function (Book) {
             res.status(201);
             res.json(book);
         }
+
+        book.author = req.body.author;
+        book.genre = req.body.genre;
+        book.title = req.body.title;
     };
     var get = function (req, res) {
         var EpicResponseObject = {
