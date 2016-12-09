@@ -13,7 +13,7 @@ var bookController = function (Book) {
             console.log('title: ' + req.body.title);
             book.save();
             res.status(201);
-            res.send(book);
+            res.json(book);
         }
     };
     var get = function (req, res) {
