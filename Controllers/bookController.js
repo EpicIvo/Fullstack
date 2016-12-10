@@ -24,9 +24,6 @@ var bookController = function (Book) {
             pagination: {}
         };
         var query = {};
-        if (req.query.genre) {
-            query.genre = req.query.genre;
-        }
         //Params
         var totalBooks;
         Book.find(query, function (err, books) {
@@ -36,10 +33,10 @@ var bookController = function (Book) {
             totalBooks = books.length;
         });
 
-        if (req.params.page) {
-            console.log(req.params.page);
+        if (req.query.page) {
+            console.log(req.query.page);
         }else{
-            console.log(req.params);
+            console.log(req.query);
             var skip = 0;
         }
         Book.find(query,{}, {skip: skip, limit: 5}, function (err, books) {
