@@ -27,8 +27,7 @@ var bookController = function (Book) {
         if (req.query.genre) {
             query.genre = req.query.genre;
         }
-        Book.find(query, {}, {limit: 10}, function (err, books) {
-            console.log(books.length());
+        Book.find(query, function (err, books) {
             if (err) {
                 return res.status(500).send(err);
             }
@@ -41,7 +40,8 @@ var bookController = function (Book) {
             //Links
             EpicResponseObject._links.self = 'http://' + req.headers.host + '/api/books/';
             //Pagination
-
+            var totalBooks = books.length();
+            console.log(totalBooks);
             //Response
             res.json(EpicResponseObject);
         });
