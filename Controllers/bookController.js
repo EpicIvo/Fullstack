@@ -35,6 +35,7 @@ var bookController = function (Book) {
                 var newBook = element.toJSON();
                 newBook._links = {};
                 newBook._links.self = 'http://' + req.headers.host + '/api/books/' + newBook._id;
+                newBook._links.collection = 'http://' + req.headers.host + '/api/books/';
                 EpicResponseObject.items.push(newBook);
             });
             //Links
