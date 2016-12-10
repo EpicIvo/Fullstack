@@ -30,8 +30,10 @@ var routes = function (Book) {
         .get(function (req, res) {
             var returnBook = req.book.toJSON();
             returnBook._links = {};
-            var newLink = 'http://' + req.headers.host + '/api/books/?genre=' + returnBook.genre;
-            returnBook._links.FilterByThisGenre = newLink.replace(' ', '%20');
+            returnBook._links.self = {};
+            returnBook._links.self.href = 'http://' + req.headers.host + '/api/books/' + returnBook._id;
+            returnBook._links.collection = {};
+            returnBook._links.collection.href = 'http://' + req.headers.host + '/api/books/' + returnBook._id;
             res.json(returnBook);
         })
         .put(function (req, res) {
