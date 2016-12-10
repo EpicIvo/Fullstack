@@ -34,7 +34,10 @@ var bookController = function (Book) {
             var start = 1;
         }
         var totalBooks;
-        Book.find(query, function (books) {
+        Book.find(query, function (err, books) {
+            if (err) {
+                return res.status(500).send(err);
+            }
             totalBooks = books.length;
         });
         Book.find(query,{}, {start: start, limit: 5}, function (err, books) {
