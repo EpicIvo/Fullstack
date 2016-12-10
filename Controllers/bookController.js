@@ -49,6 +49,16 @@ var bookController = function (Book) {
             var totalPages = Math.ceil(totalBooks/itemsPerPage);
             EpicResponseObject.pagination.totalItems = totalBooks;
             EpicResponseObject.pagination.totalPages = totalPages;
+            //Pagination links
+            EpicResponseObject.pagination._links = {};
+            //First
+            EpicResponseObject.pagination._links.first = {};
+            EpicResponseObject.pagination._links.first.page = 'Page 1';
+            EpicResponseObject.pagination._links.first.href = 'http://' + req.headers.host + '/api/books/?page=1';
+            //Last
+            EpicResponseObject.pagination._links.last = {};
+            EpicResponseObject.pagination._links.last.page = 'Page ' + totalPages;
+            EpicResponseObject.pagination._links.last.href = 'http://' + req.headers.host + '/api/books/?page=' + totalPages;
             //Response
             res.json(EpicResponseObject);
         });
