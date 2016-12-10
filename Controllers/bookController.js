@@ -27,7 +27,13 @@ var bookController = function (Book) {
         if (req.query.genre) {
             query.genre = req.query.genre;
         }
-        Book.find(query, function (err, books) {
+        //Params
+        if(req.params.start) {
+            var start = req.params.start;
+        }else{
+            var start = 1;
+        }
+        Book.find(query,{}, {start: start, limit: 5}, function (err, books) {
             if (err) {
                 return res.status(500).send(err);
             }
