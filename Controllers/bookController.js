@@ -34,9 +34,8 @@ var bookController = function (Book) {
         });
 
         if (req.query.page) {
-            console.log(req.query.page);
+            var skip = (req.query.page - 1) * 5;
         }else{
-            console.log(req.query);
             var skip = 0;
         }
         Book.find(query,{}, {skip: skip, limit: 5}, function (err, books) {
