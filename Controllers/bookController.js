@@ -40,7 +40,7 @@ var bookController = function (Book) {
             //Links
             EpicResponseObject._links.self = 'http://' + req.headers.host + '/api/books/';
             //Pagination
-            var totalBooks = books.length();
+            var totalBooks = books.length;
             console.log(totalBooks);
             //Response
             res.json(EpicResponseObject);
