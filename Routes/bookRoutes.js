@@ -33,7 +33,7 @@ var routes = function (Book) {
             returnBook._links.self = {};
             returnBook._links.self.href = 'http://' + req.headers.host + '/api/books/' + returnBook._id;
             returnBook._links.collection = {};
-            returnBook._links.collection.href = 'http://' + req.headers.host + '/api/books/' + returnBook._id;
+            returnBook._links.collection.href = 'http://' + req.headers.host + '/api/books/';
             res.json(returnBook);
         })
         .put(function (req, res) {
