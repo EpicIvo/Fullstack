@@ -45,7 +45,7 @@ var bookController = function (Book) {
             EpicResponseObject._links.self.href = 'http://' + req.headers.host + '/api/books/';
             //Pagination
             var totalBooks = books.length;
-            var itemsPerPage = 10;
+            var itemsPerPage = 5;
             var totalPages = Math.ceil(totalBooks/itemsPerPage);
             EpicResponseObject.pagination.totalItems = totalBooks;
             EpicResponseObject.pagination.totalPages = totalPages;
