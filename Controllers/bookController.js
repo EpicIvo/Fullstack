@@ -28,11 +28,6 @@ var bookController = function (Book) {
             query.genre = req.query.genre;
         }
         //Params
-        if(req.params.page) {
-            var start = (req.params.page - 1) * 5;
-        }else{
-            var start = 1;
-        }
         var totalBooks;
         Book.find(query, function (err, books) {
             if (err) {
