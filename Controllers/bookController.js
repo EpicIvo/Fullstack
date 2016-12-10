@@ -27,6 +27,7 @@ var bookController = function (Book) {
         if (req.query.genre) {
             query.genre = req.query.genre;
         }
+        console.log("What does this do: " + req.query.genre + "?");
         Book.find(query, {}, {limit: 10}, function (err, books) {
             if (err) {
                 return res.status(500).send(err);
@@ -37,12 +38,11 @@ var bookController = function (Book) {
                 newBook._links.self = 'http://' + req.headers.host + '/api/books/' + newBook._id;
                 EpicResponseObject.items.push(newBook);
             });
-
-            // Commence links
+            //Links
             EpicResponseObject._links.self = 'http://' + req.headers.host + '/api/books/';
+            //Pagination
 
-            // Initiate pagination
-
+            //Response
             res.json(EpicResponseObject);
         });
     };
