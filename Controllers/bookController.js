@@ -34,8 +34,10 @@ var bookController = function (Book) {
             books.forEach(function (element, index, array) {
                 var newBook = element.toJSON();
                 newBook._links = {};
-                newBook._links.self = 'http://' + req.headers.host + '/api/books/' + newBook._id;
-                newBook._links.collection = 'http://' + req.headers.host + '/api/books/';
+                newBook._links.self = {};
+                newBook._links.self.href = 'http://' + req.headers.host + '/api/books/' + newBook._id;
+                newBook._links.collection = {};
+                newBook._links.collection.href = 'http://' + req.headers.host + '/api/books/';
                 EpicResponseObject.items.push(newBook);
             });
             //Links
