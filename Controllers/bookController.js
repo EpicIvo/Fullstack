@@ -28,8 +28,8 @@ var bookController = function (Book) {
             query.genre = req.query.genre;
         }
         //Params
-        if(req.params.start) {
-            var start = req.params.start;
+        if(req.params.page) {
+            var start = (req.params.page - 1) * 5;
         }else{
             var start = 1;
         }
