@@ -39,7 +39,7 @@ var bookController = function (Book) {
             });
 
             // Commence links
-
+            EpicResponseObject._links.self = 'http://' + req.headers.host + '/api/books/';
 
             // Initiate pagination
 
