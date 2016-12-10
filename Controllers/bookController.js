@@ -37,7 +37,7 @@ var bookController = function (Book) {
         });
 
         if (req.params.page) {
-            var skip = (req.params.page - 1) * 5 + 1
+            console.log(req.params.page)
         }else{
             var skip = 0;
         }
