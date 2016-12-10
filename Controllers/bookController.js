@@ -35,7 +35,13 @@ var bookController = function (Book) {
             }
             totalBooks = books.length;
         });
-        Book.find(query,{}, {skip: 5, limit: 5}, function (err, books) {
+
+        if (req.params.page) {
+            var skip = (req.params.page - 1) * 5 + 1
+        }else{
+            var skip = 0;
+        }
+        Book.find(query,{}, {skip: skip, limit: 5}, function (err, books) {
             if (err) {
                 return res.status(500).send(err);
             }
