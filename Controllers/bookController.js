@@ -27,16 +27,7 @@ var bookController = function (Book) {
         if (req.query.genre) {
             query.genre = req.query.genre;
         }
-        var totalBooks = 1;
-        Book.find(query, function (err, books) {
-            if (err) {
-                return res.status(500).send(err);
-            }
-            books.forEach(function () {
-                totalBooks =+ 1;
-            })
-        });
-        console.log(totalBooks);
+        console.log(req.query.count());
         Book.find(query, {}, {limit: 10}, function (err, books) {
             if (err) {
                 return res.status(500).send(err);
