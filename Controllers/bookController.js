@@ -38,10 +38,13 @@ var bookController = function (Book) {
                 EpicResponseObject.items.push(newBook);
             });
             //Links
-            EpicResponseObject._links.self = 'http://' + req.headers.host + '/api/books/';
+            EpicResponseObject._links.self = {};
+            EpicResponseObject._links.self.href = 'http://' + req.headers.host + '/api/books/';
             //Pagination
             var totalBooks = books.length;
-            var totalPages = totalBooks / 10;
+            if (totalBooks % 10 == 0){
+                var totalPages = 1;
+            }
             EpicResponseObject.pagination.totalItems = totalBooks;
             EpicResponseObject.pagination.totalPages = totalPages;
             //Response
