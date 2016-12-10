@@ -33,10 +33,10 @@ var bookController = function (Book) {
                 return res.status(500).send(err);
             }
             books.forEach(function () {
-                totalBooks += 1;
+                totalBooks =+ 1;
             })
         });
-        console.log(totalBooks)
+        console.log(totalBooks);
         Book.find(query, {}, {limit: 10}, function (err, books) {
             if (err) {
                 return res.status(500).send(err);
