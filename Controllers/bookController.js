@@ -61,6 +61,10 @@ var bookController = function (Book) {
             EpicResponseObject.pagination.totalPages = totalPages;
             //Pagination links
             EpicResponseObject.pagination._links = {};
+            //Current
+            EpicResponseObject.pagination._links.current = {};
+            EpicResponseObject.pagination._links.current.page = 'Page ' + req.query.page;
+            EpicResponseObject.pagination._links.first.href = 'http://' + req.headers.host + '/api/books/?page=' + req.query.page;
             //First
             EpicResponseObject.pagination._links.first = {};
             EpicResponseObject.pagination._links.first.page = 'Page 1';
