@@ -31,7 +31,10 @@ var bookController = function (Book) {
             var skip = 0;
             var currentPage = 1;
         }
-        var condition = {};
+        var condition = {
+            start: 0,
+            limit: 7
+        };
         Book.find(query,{}, {condition}, function (err, books) {
             var totalBooks = books.length;
             if (err) {
