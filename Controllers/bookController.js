@@ -24,15 +24,6 @@ var bookController = function (Book) {
             pagination: {}
         };
         var query = {};
-        //Params
-        // var totalBooks;
-        // Book.find(query, function (err, books) {
-        //     if (err) {
-        //         return res.status(500).send(err);
-        //     }
-        //     totalBooks = books.length;
-        // });
-
         if (req.query.page) {
             var skip = (req.query.page - 1) * 5;
             var currentPage = req.query.page;
@@ -40,7 +31,8 @@ var bookController = function (Book) {
             var skip = 0;
             var currentPage = 1;
         }
-        Book.find(query, function (err, books) {
+        var condition = {};
+        Book.find(query,{}, {condition}, function (err, books) {
             var totalBooks = books.length;
             if (err) {
                 return res.status(500).send(err);
