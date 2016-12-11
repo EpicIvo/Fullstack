@@ -73,17 +73,17 @@ var bookController = function (Book) {
             EpicResponseObject.pagination._links.last = {};
             EpicResponseObject.pagination._links.last.page = 'Page ' + totalPages;
             EpicResponseObject.pagination._links.last.href = 'http://' + req.headers.host + '/api/books/?page=' + totalPages;
-            //Previous
+            //Next
             EpicResponseObject.pagination._links.previous = {};
             if (currentPage + 1 > totalPages){
                 EpicResponseObject.pagination._links.previous.page = 'Page ' + totalPages;
             }
             EpicResponseObject.pagination._links.previous.page = 'Page ' + currentPage + 1;
             EpicResponseObject.pagination._links.previous.href = 'http://' + req.headers.host + '/api/books/?page=' + currentPage + 1;
-            //Next
+            //Previous
             EpicResponseObject.pagination._links.next = {};
             if (currentPage - 1 < 1){
-                EpicResponseObject.pagination._links.previous.page = 'Page ' + 1;
+                EpicResponseObject.pagination._links.next.page = 'Page ' + 1;
             }
             EpicResponseObject.pagination._links.next.page = 'Page ' + currentPage - 1;
             EpicResponseObject.pagination._links.next.href = 'http://' + req.headers.host + '/api/books/?page=' + currentPage - 1;
