@@ -40,7 +40,7 @@ var bookController = function (Book) {
             var skip = 0;
             var currentPage = 1;
         }
-        Book.find(query,{}, {skip: skip, limit: 5}, function (err, books) {
+        Book.find(query,{}, {skip: skip, limit: 7}, function (err, books) {
             if (err) {
                 return res.status(500).send(err);
             }
@@ -57,7 +57,7 @@ var bookController = function (Book) {
             EpicResponseObject._links.self = {};
             EpicResponseObject._links.self.href = 'http://' + req.headers.host + '/api/books/';
             //Pagination
-            var itemsPerPage = 5;
+            var itemsPerPage = 7;
             var totalPages = Math.ceil(totalBooks/itemsPerPage);
             EpicResponseObject.pagination.currentPage = currentPage;
             EpicResponseObject.pagination.currentItems = books.length;
@@ -74,18 +74,20 @@ var bookController = function (Book) {
             EpicResponseObject.pagination._links.last.page = 'Page ' + totalPages;
             EpicResponseObject.pagination._links.last.href = 'http://' + req.headers.host + '/api/books/?page=' + totalPages;
             //Next
+            var nextPage = currentPage + 1;
             EpicResponseObject.pagination._links.next = {};
-            if (currentPage + 1 > totalPages){
+            if (nextPage > totalPages){
                 EpicResponseObject.pagination._links.next.page = 'Page ' + totalPages;
             }
-            EpicResponseObject.pagination._links.next.page = 'Page ' + currentPage + 1;
+            EpicResponseObject.pagination._links.next.page = 'Page ' + nextPage;
             EpicResponseObject.pagination._links.next.href = 'http://' + req.headers.host + '/api/books/?page=' + currentPage + 1;
             //Previous
+            var previousPage = currentPage - 1;
             EpicResponseObject.pagination._links.previous = {};
-            if (currentPage - 1 < 1){
+            if (previousPage < 1){
                 EpicResponseObject.pagination._links.previous.page = 'Page ' + 1;
             }
-            EpicResponseObject.pagination._links.previous.page = 'Page ' + currentPage - 1;
+            EpicResponseObject.pagination._links.previous.page = 'Page ' + previousPage;
             EpicResponseObject.pagination._links.previous.href = 'http://' + req.headers.host + '/api/books/?page=' + currentPage - 1;
             //Response
             res.json(EpicResponseObject);
