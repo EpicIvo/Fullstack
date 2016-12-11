@@ -35,8 +35,10 @@ var bookController = function (Book) {
 
         if (req.query.page) {
             var skip = (req.query.page - 1) * 5;
+            var currentPage = req.query.page;
         }else{
             var skip = 0;
+            var currentPage = 1;
         }
         Book.find(query,{}, {skip: skip, limit: 5}, function (err, books) {
             if (err) {
@@ -63,8 +65,8 @@ var bookController = function (Book) {
             EpicResponseObject.pagination._links = {};
             //Current
             EpicResponseObject.pagination._links.current = {};
-            EpicResponseObject.pagination._links.current.page = 'Page ' + req.query.page;
-            EpicResponseObject.pagination._links.first.href = 'http://' + req.headers.host + '/api/books/?page=' + req.query.page;
+            EpicResponseObject.pagination._links.current.page = 'Page ' + currentPage;
+            EpicResponseObject.pagination._links.first.href = 'http://' + req.headers.host + '/api/books/?page=' + currentPage;
             //First
             EpicResponseObject.pagination._links.first = {};
             EpicResponseObject.pagination._links.first.page = 'Page 1';
