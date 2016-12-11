@@ -40,6 +40,7 @@ var bookController = function (Book) {
             start = 0;
             limit = 1000;
         }
+        console.log("start: " + start + "  -  limit: " + limit);
         Book.find(query,{}, {start: start, limit: limit}, function (err, books) {
             var totalBooks = books.length;
             if (err) {
