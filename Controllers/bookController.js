@@ -66,7 +66,7 @@ var bookController = function (Book) {
             //Current
             EpicResponseObject.pagination._links.current = {};
             EpicResponseObject.pagination._links.current.page = 'Page ' + currentPage;
-            EpicResponseObject.pagination._links.first.href = 'http://' + req.headers.host + '/api/books/?page=' + currentPage;
+            EpicResponseObject.pagination._links.current.href = 'http://' + req.headers.host + '/api/books/?page=' + currentPage;
             //First
             EpicResponseObject.pagination._links.first = {};
             EpicResponseObject.pagination._links.first.page = 'Page 1';
