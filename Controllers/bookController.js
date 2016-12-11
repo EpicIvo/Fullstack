@@ -24,15 +24,23 @@ var bookController = function (Book) {
             pagination: {}
         };
         var query = {};
+        //Page
+        var currentPage;
         if (req.query.page) {
-            var skip = (req.query.page - 1) * 5;
-            var currentPage = req.query.page;
+            currentPage = req.query.page;
         } else {
-            var skip = 0;
-            var currentPage = 1;
+            currentPage = 1;
         }
-        var start = 0;
-        var limit = 7;
+        //Start and limit
+        var start;
+        var limit;
+        if(req.query.start && req.query.limit){
+            start = req.query.start;
+            limit = req.query.limit;
+        }else{
+            start = 0;
+            limit = 1000;
+        }
         Book.find(query,{}, {start: start, limit: limit}, function (err, books) {
             var totalBooks = books.length;
             if (err) {
