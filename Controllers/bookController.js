@@ -40,7 +40,7 @@ var bookController = function (Book) {
             var skip = 0;
             var currentPage = 1;
         }
-        Book.find(query, {}, {skip: skip, limit: 7}, function (err, books) {
+        Book.find(query, {}, {start: skip, limit: 7}, function (err, books) {
             if (err) {
                 return res.status(500).send(err);
             }
