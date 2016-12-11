@@ -25,13 +25,13 @@ var bookController = function (Book) {
         };
         var query = {};
         //Params
-        var totalBooks;
-        Book.find(query, function (err, books) {
-            if (err) {
-                return res.status(500).send(err);
-            }
-            totalBooks = books.length;
-        });
+        // var totalBooks;
+        // Book.find(query, function (err, books) {
+        //     if (err) {
+        //         return res.status(500).send(err);
+        //     }
+        //     totalBooks = books.length;
+        // });
 
         if (req.query.page) {
             var skip = (req.query.page - 1) * 5;
@@ -40,7 +40,8 @@ var bookController = function (Book) {
             var skip = 0;
             var currentPage = 1;
         }
-        Book.find(query, {}, {start: skip, limit: 7}, function (err, books) {
+        Book.find(query, function (err, books) {
+            var totalBooks = books.length;
             if (err) {
                 return res.status(500).send(err);
             }
