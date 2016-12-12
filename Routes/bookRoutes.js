@@ -33,13 +33,14 @@ var routes = function (Book) {
             res.send(200);
         })
         .get(function (req, res) {
+            var home = 'https://fullstack-s.herokuapp.com/api/books/';
             var returnBook = req.book.toJSON();
             returnBook._links = {
                 self: {
-                    href: 'http://' + req.headers.host + '/api/books/' + returnBook._id
+                    href: home + returnBook._id
                 },
                 collection: {
-                    href: 'http://' + req.headers.host + '/api/books/'
+                    href: home
                 }
             };
             res.json(returnBook);
