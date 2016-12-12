@@ -42,7 +42,7 @@ var bookController = function (Book) {
                     _links: {
                         next: {
                             page: pagination.currentPage + 1,
-                            href: home + '?start' + (start + pagination.currentItems) + '&limit=' + (limit || 0)
+                            href: home + '?start=' + (start + pagination.currentItems) + '&limit=' + (limit || 0)
                         },
                         previous: {
                             page: pagination.currentItems - 1,
