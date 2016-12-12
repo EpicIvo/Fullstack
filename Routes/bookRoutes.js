@@ -49,7 +49,8 @@ var routes = function (Book) {
             console.log(req.body.title);
             console.log(req.body.author);
             console.log(req.body.genre);
-            if (req.body.title || req.body.author || req.body.genre ) {
+            if (!req.body.title || !req.body.author || !req.body.genre ) {
+                console.log('Empty');
                 req.book.title = req.body.title;
                 req.book.author = req.body.author;
                 req.book.genre = req.body.genre;
@@ -60,7 +61,9 @@ var routes = function (Book) {
                         res.json(req.book);
                     }
                 });
+
             }else{
+                console.log('Not empty');
                 res.status(500).json({message: 'cannot leave anything empty'});
             }
         })
