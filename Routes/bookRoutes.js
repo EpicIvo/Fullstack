@@ -9,7 +9,7 @@ var routes = function (Book) {
         .get(bookController.get)
         .options(function (err, res) {
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-            res.sendStatus(200);
+            res.send(200);
         });
 
     bookRouter.use('/:bookId', function (req, res, next) {
@@ -21,16 +21,16 @@ var routes = function (Book) {
                 next();
             }
             else {
-                res.status(404).json({message: 'no book found'});
+                res.status(404).send('no book found');
             }
         });
     });
     bookRouter.route('/:bookId')
         .options(function (err, res) {
-        res.header('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS');
-        res.header('Accept', 'application/json');
-        res.sendStatus(200);
-    })
+            res.header('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS');
+            res.header('Accept', 'application/json');
+            res.send(200);
+        })
         .get(function (req, res) {
             var home = 'https://fullstack-s.herokuapp.com/api/books/';
             var returnBook = req.book.toJSON();
@@ -46,7 +46,7 @@ var routes = function (Book) {
         })
         .put(function (req, res) {
             if (!req.body.title || !req.body.author || !req.body.genre ) {
-                res.sendStatus(418).json({message: 'cannot leave anything empty'});
+                res.status(418).json({message: 'cannot leave anything empty'});
             }else{
                 req.book.title = req.body.title;
                 req.book.author = req.body.author;
@@ -70,7 +70,7 @@ var routes = function (Book) {
 
             req.book.save(function (err) {
                 if (err)
-                    res.sendStatus(500).send(err);
+                    res.status(500).send(err);
                 else {
                     res.json(req.book);
                 }
@@ -79,9 +79,9 @@ var routes = function (Book) {
         .delete(function (req, res) {
             req.book.remove(function (err) {
                 if (err)
-                    res.sendStatus(500).send(err);
+                    res.status(500).send(err);
                 else {
-                    res.sendStatus(204).send('Removed');
+                    res.status(204).send('Removed');
                 }
             });
         });
