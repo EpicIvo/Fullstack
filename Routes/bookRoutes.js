@@ -50,10 +50,10 @@ var routes = function (Book) {
             console.log(req.body.author);
             console.log(req.body.genre);
             if (!req.body.title || !req.body.author || !req.body.genre ) {
-                console.log('Not empty');
+                console.log('Empty');
                 res.status(500).json({message: 'cannot leave anything empty'});
             }else{
-                console.log('Empty');
+                console.log('Not empty');
                 req.book.title = req.body.title;
                 req.book.author = req.body.author;
                 req.book.genre = req.body.genre;
