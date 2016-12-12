@@ -4,11 +4,9 @@ var bookController = function (Book) {
         book.author = req.body.author;
         book.genre = req.body.genre;
         book.title = req.body.title;
-
         if (book.title == null || book.author == null || book.genre == null) {
             return res.status(400).send("Keine empty fields BITTE!");
         }
-
         book.save(function (err) {
             if (err) {
                 console.log(err);
@@ -17,8 +15,7 @@ var bookController = function (Book) {
         });
     };
     var get = function (req, res) {
-        var query = {};
-        Book.find(query, function (err, books) {
+        Book.find(function (err, books) {
             if (err) {
                 return res.status(500).send(err);
             }
