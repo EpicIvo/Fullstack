@@ -9,19 +9,19 @@ var routes = function (Book) {
         .get(bookController.get)
         .options(function (err, res) {
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-            res.send(200);
+            res.sendStatus(200);
         });
 
     bookRouter.use('/:bookId', function (req, res, next) {
         Book.findById(req.params.bookId, function (err, book) {
             if (err)
-                res.status(500).send(err);
+                res.status(500).sendStatus(err);
             else if (book) {
                 req.book = book;
                 next();
             }
             else {
-                res.status(404).send('no book found');
+                res.status(404).json({message: 'no book found'});
             }
         });
     });
@@ -29,7 +29,7 @@ var routes = function (Book) {
         .options(function (err, res) {
             res.header('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS');
             res.header('Accept', 'application/json');
-            res.send(200);
+            res.sendStatus(200);
         })
         .get(function (req, res) {
             var home = 'https://fullstack-s.herokuapp.com/api/books/';
@@ -59,7 +59,7 @@ var routes = function (Book) {
                 req.book.genre = req.body.genre;
                 req.book.save(function (err) {
                     if (err)
-                        res.status(500).send(err);
+                        res.status(500).sendStatus(err);
                     else {
                         res.json(req.book);
                     }
@@ -76,7 +76,7 @@ var routes = function (Book) {
 
             req.book.save(function (err) {
                 if (err)
-                    res.status(500).send(err);
+                    res.sendStatus(500).sendStatus(err);
                 else {
                     res.json(req.book);
                 }
@@ -85,9 +85,9 @@ var routes = function (Book) {
         .delete(function (req, res) {
             req.book.remove(function (err) {
                 if (err)
-                    res.status(500).send(err);
+                    res.sendStatus(500).sendStatus(err);
                 else {
-                    res.status(204).send('Removed');
+                    res.sendStatus(204).json({message: 'Removed'});
                 }
             });
         });
