@@ -11,7 +11,6 @@ var routes = function (Book) {
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
             res.send(200);
         });
-
     bookRouter.use('/:bookId', function (req, res, next) {
         Book.findById(req.params.bookId, function (err, book) {
             if (err)
@@ -63,11 +62,9 @@ var routes = function (Book) {
         .patch(function (req, res) {
             if (req.body._id)
                 delete req.body._id;
-
             for (var p in req.body) {
                 req.book[p] = req.body[p];
             }
-
             req.book.save(function (err) {
                 if (err)
                     res.status(500).send(err);
