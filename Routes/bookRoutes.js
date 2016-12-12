@@ -46,17 +46,20 @@ var routes = function (Book) {
             res.json(returnBook);
         })
         .put(function (req, res) {
-            console.log(req.book.title);
-            req.book.title = req.body.title;
-            req.book.author = req.body.author;
-            req.book.genre = req.body.genre;
-            req.book.save(function (err) {
-                if (err)
-                    res.status(500).send(err);
-                else {
-                    res.json(req.book);
-                }
-            });
+            if (req.book.title !== null && req.book.author !== null && req.book.genre !== null) {
+                req.book.title = req.body.title;
+                req.book.author = req.body.author;
+                req.book.genre = req.body.genre;
+                req.book.save(function (err) {
+                    if (err)
+                        res.status(500).send(err);
+                    else {
+                        res.json(req.book);
+                    }
+                });
+            }else{
+                res.status(500).json({message: 'cannot leave anything empty'});
+            }
         })
         .patch(function (req, res) {
             if (req.body._id)
