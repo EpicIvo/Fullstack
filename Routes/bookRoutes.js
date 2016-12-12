@@ -26,11 +26,11 @@ var routes = function (Book) {
         });
     });
     bookRouter.route('/:bookId')
-        .options(function (err, res) {
-            res.header('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS');
-            res.header('Accept', 'application/json');
-            res.sendStatus(200);
-        })
+        // .options(function (err, res) {
+        //     res.header('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS');
+        //     res.header('Accept', 'application/json');
+        //     res.sendStatus(200);
+        // })
         .get(function (req, res) {
             var home = 'https://fullstack-s.herokuapp.com/api/books/';
             var returnBook = req.book.toJSON();
