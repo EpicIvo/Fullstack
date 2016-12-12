@@ -41,11 +41,11 @@ var bookController = function (Book) {
                     currentPage: pagination.currentPage,
                     _links: {
                         next: {
-                            page: pagination.currentPage + 1,
+                            page: pagination.totalPages !== pagination.currentPage ? pagination.currentPage + 1 : pagination.currentPage,
                             href: home + '?start=' + (start + pagination.currentItems) + '&limit=' + (limit || 0)
                         },
                         previous: {
-                            page: (pagination.currentPage !== 1 ? pagination.currentPage - 1 : 1),
+                            page: pagination.currentPage !== 1 ? pagination.currentPage - 1 : 1,
                             href: home + '?start=' + (start >= pagination.currentItems ? start - pagination.currentItems : 0) + '&limit=' + (limit || 0)
                         },
                         first: {
