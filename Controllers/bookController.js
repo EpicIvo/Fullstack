@@ -22,6 +22,9 @@ var bookController = function (Book) {
             }
             var start = req.query.start !== undefined ? parseInt(req.query.start) : null;
             var limit = req.query.limit !== undefined ? parseInt(req.query.limit) : null;
+            if (start == 0){
+                start = 1;
+            }
             var pagination = {
                 totalPages: limit !== null ? Math.ceil(books.length / limit) - 1 : 1,
                 currentItems: limit !== null ? limit : books.length,
