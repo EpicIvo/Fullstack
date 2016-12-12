@@ -45,7 +45,7 @@ var routes = function (Book) {
             res.json(returnBook);
         })
         .put(function (req, res) {
-            console.log(req.body.toJSON);
+            console.log(req.body.toJSON());
             console.log(req.body.title);
             console.log(req.body.author);
             console.log(req.body.genre);
