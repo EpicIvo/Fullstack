@@ -26,7 +26,7 @@ var bookController = function (Book) {
                 start = 1;
             }
             var pagination = {
-                totalPages: limit !== null ? Math.ceil(books.length / limit) - 1 : 1,
+                totalPages: limit !== null ? Math.ceil(books.length / limit) : 1,
                 currentItems: limit !== null ? limit : books.length,
                 currentPage: (start !== null && limit !== null) ? Math.ceil(start / limit) : 1
             };
@@ -57,7 +57,7 @@ var bookController = function (Book) {
                         },
                         last: {
                             page: pagination.totalPages,
-                            href: home + '?start=' + (limit ? books.length - limit : 0) + '&limit=' + (limit || 0)
+                            href: home + '?start=' + (limit ? (books.length + 1) - limit : 0) + '&limit=' + (limit || 0)
                         }
                     }
                 }
