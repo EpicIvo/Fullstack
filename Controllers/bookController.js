@@ -67,12 +67,12 @@ var bookController = function (Book) {
             };
             //Books
             for (var i = start || 0, length = books.length, l = 0; i < length && (limit !== null ? l < limit : 1); i++, l++) {
-                var book = books[i];
+                var oneBook = books[i];
                 EpicResponseObject.items.push({
-                    item: book,
+                    item: oneBook,
                     _links: {
                         self: {
-                            href: home + book._id
+                            href: home + oneBook._id
                         },
                         collection: {
                             href: home
