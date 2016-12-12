@@ -46,10 +46,10 @@ var routes = function (Book) {
             res.json(returnBook);
         })
         .put(function (req, res) {
-            req.book.items[0] = req.body.title;
-            req.book.items[1] = req.body.author;
-            req.book.items[2] = req.body.genre;
-            req.book.items[3] = req.body.read;
+            console.log(req.book.title);
+            req.book.title = req.body.title;
+            req.book.author = req.body.author;
+            req.book.genre = req.body.genre;
             req.book.save(function (err) {
                 if (err)
                     res.status(500).send(err);
