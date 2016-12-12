@@ -67,6 +67,7 @@ var bookController = function (Book) {
             };
             //Books
             for (var i = start || 0, length = books.length, l = 0; i < length && (limit !== null ? l < limit : 1); i++, l++) {
+                var book = books[i];
                 EpicResponseObject.items.push({
                     item: book,
                     _links: {
