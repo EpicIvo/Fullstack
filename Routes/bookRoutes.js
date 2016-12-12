@@ -27,6 +27,10 @@ var routes = function (Book) {
         });
     });
     bookRouter.route('/:bookId')
+        .options(function (err, res) {
+            res.header('Accept', 'application/json');
+            res.send(200);
+        })
         .get(function (req, res) {
             var returnBook = req.book.toJSON();
             returnBook._links = {};
