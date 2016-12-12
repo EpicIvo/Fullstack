@@ -20,16 +20,13 @@ var bookController = function (Book) {
             if (err) {
                 return res.status(500).send(err);
             }
-
             var start = req.query.start !== undefined ? parseInt(req.query.start) : null;
             var limit = req.query.limit !== undefined ? parseInt(req.query.limit) : null;
-
             var pagination = {
                 TotalPages: limit !== null ? Math.ceil(books.length / limit) - 1 : 1,
                 currentItems: limit !== null ? limit : books.length,
                 currentPage: (start !== null && limit !== null) ? Math.ceil(start / limit) : 1
             };
-
             var EpicResponseObject = {
                 items: [],
                 _links: {
@@ -62,7 +59,6 @@ var bookController = function (Book) {
                     }
                 }
             };
-            //Books
             for (var i = start || 0, length = books.length, l = 0; i < length && (limit !== null ? l < limit : 1); i++, l++) {
                 var oneBook = books[i];
                 EpicResponseObject.items.push({
@@ -77,6 +73,7 @@ var bookController = function (Book) {
                     }
                 });
             }
+            res.status(200).json(EpicResponseObject);
         });
     };
     return {
