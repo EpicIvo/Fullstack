@@ -15,7 +15,7 @@ var routes = function (Book) {
     bookRouter.use('/:bookId', function (req, res, next) {
         Book.findById(req.params.bookId, function (err, book) {
             if (err)
-                res.status(500).sendStatus(err);
+                res.status(500).send(err);
             else if (book) {
                 req.book = book;
                 next();
@@ -59,7 +59,7 @@ var routes = function (Book) {
                 req.book.genre = req.body.genre;
                 req.book.save(function (err) {
                     if (err)
-                        res.status(500).sendStatus(err);
+                        res.status(500).send(err);
                     else {
                         res.json(req.book);
                     }
@@ -76,7 +76,7 @@ var routes = function (Book) {
 
             req.book.save(function (err) {
                 if (err)
-                    res.sendStatus(500).sendStatus(err);
+                    res.sendStatus(500).send(err);
                 else {
                     res.json(req.book);
                 }
@@ -85,7 +85,7 @@ var routes = function (Book) {
         .delete(function (req, res) {
             req.book.remove(function (err) {
                 if (err)
-                    res.sendStatus(500).sendStatus(err);
+                    res.sendStatus(500).send(err);
                 else {
                     res.sendStatus(204).json({message: 'Removed'});
                 }
