@@ -50,7 +50,7 @@ var bookController = function (Book) {
                         },
                         first: {
                             page: 1,
-                            href: home + + (start ? '?start=' + start : '') + (limit ? '&limit=' + limit : '')
+                            href: home + (start ? '?start=' + start : '') + (limit ? '&limit=' + limit : '')
                         },
                         last: {
                             page: pagination.totalPages,
