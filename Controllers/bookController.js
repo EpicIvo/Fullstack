@@ -38,7 +38,7 @@ var bookController = function (Book) {
                     totalItems: books.length,
                     totalPages: pagination.totalPages,
                     currentItems: pagination.currentItems,
-                    currentPage: pagination.currentPage,
+                    currentPage: pagination.currentPage < 1 ? 1 : pagination.currentPage,
                     _links: {
                         next: {
                             page: pagination.totalPages !== pagination.currentPage ? pagination.currentPage + 1 : pagination.currentPage,
