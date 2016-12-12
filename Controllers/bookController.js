@@ -54,7 +54,7 @@ var bookController = function (Book) {
                         },
                         last: {
                             page: pagination.totalPages,
-                            href: home + '?start=' + pagination.totalItems - limit
+                            href: home + '?start=' + books.length - parseInt(limit)
                         }
                     }
                 }
