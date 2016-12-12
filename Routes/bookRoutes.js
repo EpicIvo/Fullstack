@@ -28,7 +28,7 @@ var routes = function (Book) {
     });
     bookRouter.route('/:bookId')
         .options(function (err, res) {
-            res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+            res.header('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS');
             res.header('Accept', 'application/json');
             res.send(200);
         })
