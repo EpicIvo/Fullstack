@@ -15,11 +15,11 @@ var bookController = function (Book) {
         });
     };
     var get = function (req, res) {
+        var home = 'http://' + req.headers.host + '/api/books/';
         Book.find(function (err, books) {
             if (err) {
                 return res.status(500).send(err);
             }
-            var home = 'http://' + req.headers.host + '/api/books/';
 
             var start = req.query.start !== undefined ? parseInt(req.query.start) : null;
             var limit = req.query.limit !== undefined ? parseInt(req.query.limit) : null;
