@@ -49,7 +49,7 @@ var routes = function (Book) {
             console.log(req.body.title);
             console.log(req.body.author);
             console.log(req.body.genre);
-            if (!req.body.title || !req.body.author || !req.body.genre ) {
+            if (req.body.title || req.body.author || req.body.genre ) {
                 req.book.title = req.body.title;
                 req.book.author = req.body.author;
                 req.book.genre = req.body.genre;
