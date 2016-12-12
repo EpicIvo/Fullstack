@@ -7,7 +7,6 @@ var routes = function (Book) {
     bookRouter.route('/')
         .post(bookController.post)
         .get(bookController.get)
-
         .options(function (err, res) {
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
             res.send(200);
@@ -46,7 +45,7 @@ var routes = function (Book) {
             res.json(returnBook);
         })
         .put(function (req, res) {
-            console.log(req.body);
+            console.log(req.body.toJSON);
             console.log(req.body.title);
             console.log(req.body.author);
             console.log(req.body.genre);
