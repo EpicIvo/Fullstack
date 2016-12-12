@@ -46,6 +46,10 @@ var routes = function (Book) {
             res.json(returnBook);
         })
         .put(function (req, res) {
+            console.log(req.body);
+            console.log(req.title);
+            console.log(req.author);
+            console.log(req.genre);
             if (req.body.title !== "" || req.body.author !== null || req.body.genre !== null) {
                 req.book.title = req.body.title;
                 req.book.author = req.body.author;
