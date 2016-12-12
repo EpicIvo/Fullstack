@@ -9,7 +9,7 @@ var routes = function (Book) {
         .get(bookController.get)
 
         .options(function (err, res) {
-            res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS,');
+            res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
             res.send(200);
         });
 
@@ -28,16 +28,20 @@ var routes = function (Book) {
     });
     bookRouter.route('/:bookId')
         .options(function (err, res) {
+            res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
             res.header('Accept', 'application/json');
             res.send(200);
         })
         .get(function (req, res) {
             var returnBook = req.book.toJSON();
-            returnBook._links = {};
-            returnBook._links.self = {};
-            returnBook._links.self.href = 'http://' + req.headers.host + '/api/books/' + returnBook._id;
-            returnBook._links.collection = {};
-            returnBook._links.collection.href = 'http://' + req.headers.host + '/api/books/';
+            returnBook._links = {
+                self: {
+                    href: 'http://' + req.headers.host + '/api/books/' + returnBook._id
+                },
+                collection: {
+                    href: 'http://' + req.headers.host + '/api/books/'
+                }
+            };
             res.json(returnBook);
         })
         .put(function (req, res) {
