@@ -15,7 +15,7 @@ var bookController = function (Book) {
         });
     };
     var get = function (req, res) {
-        var home = 'https://fullstack-s.herokuapp.com/api/books';
+        var home = 'https://fullstack-s.herokuapp.com/api/books/';
         Book.find(function (err, books) {
             if (err) {
                 return res.status(500).send(err);
