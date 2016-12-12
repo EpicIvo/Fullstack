@@ -52,7 +52,7 @@ var bookController = function (Book) {
                         },
                         previous: {
                             page: pagination.currentItems - 1,
-                            href: home + '?start=' + (start >= currentItems ? start - pagination.currentItems : 0) + '&limit=' + (limit || 0)
+                            href: home + '?start=' + (start >= pagination.currentItems ? start - pagination.currentItems : 0) + '&limit=' + (limit || 0)
                         },
                         first: {
                             page: 1,
