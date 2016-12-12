@@ -17,86 +17,68 @@ var bookController = function (Book) {
         });
     };
     var get = function (req, res) {
-        var EpicResponseObject = {
-            items: [],
-            _links: {},
-            pagination: {}
-        };
         var query = {};
-        //Page
-        var currentPage;
-        if (req.query.page) {
-            currentPage = req.query.page;
-        } else {
-            currentPage = 1;
-        }
-        //Start and limit
-        var start;
-        var limit;
-        if(req.query.start && req.query.limit){
-            start = req.query.start;
-            limit = req.query.limit;
-        }else{
-            start = 0;
-            limit = 1000;
-        }
-        console.log("start: " + start + "  -  limit: " + limit);
-        Book.find(query,{}, {start: start, limit: limit}, function (err, books) {
-            console.log(books);
-            var totalBooks = books.length;
+        Book.find(query, function (err, books) {
             if (err) {
                 return res.status(500).send(err);
             }
-            books.forEach(function (element, index, array) {
-                var newBook = element.toJSON();
-                newBook._links = {};
-                newBook._links.self = {};
-                newBook._links.self.href = 'http://' + req.headers.host + '/api/books/' + newBook._id;
-                newBook._links.collection = {};
-                newBook._links.collection.href = 'http://' + req.headers.host + '/api/books/';
-                EpicResponseObject.items.push(newBook);
-            });
-            //Links
-            EpicResponseObject._links.self = {};
-            EpicResponseObject._links.self.href = 'http://' + req.headers.host + '/api/books/';
-            //Pagination
-            var totalPages = Math.ceil(totalBooks / 7);
-            EpicResponseObject.pagination.currentPage = currentPage;
-            EpicResponseObject.pagination.currentItems = books.length;
-            EpicResponseObject.pagination.totalPages = totalPages;
-            EpicResponseObject.pagination.totalItems = totalBooks;
-            //Pagination links
-            EpicResponseObject.pagination._links = {};
-            //First
-            EpicResponseObject.pagination._links.first = {};
-            EpicResponseObject.pagination._links.first.page = 'Page 1';
-            EpicResponseObject.pagination._links.first.href = 'http://' + req.headers.host + '/api/books/?page=1&start=1&limit=7';
-            //Last
-            EpicResponseObject.pagination._links.last = {};
-            EpicResponseObject.pagination._links.last.page = 'Page ' + totalPages;
-            EpicResponseObject.pagination._links.last.href = 'http://' + req.headers.host + '/api/books/?page=' + totalPages + '&start=' + (totalPages - 1) * 7 + '&limit=7';
-            //Next
-            var nextPage = currentPage + 1;
-            EpicResponseObject.pagination._links.next = {};
-            if (nextPage > totalPages) {
-                EpicResponseObject.pagination._links.next.page = 'Page ' + totalPages;
-                EpicResponseObject.pagination._links.next.href = 'http://' + req.headers.host + '/api/books/?page=' + totalPages + '&start=' + (totalPages - 1) * 7 + '&limit=7';
-            } else {
-                EpicResponseObject.pagination._links.next.page = 'Page ' + nextPage;
-                EpicResponseObject.pagination._links.next.href = 'http://' + req.headers.host + '/api/books/?page=' + nextPage + '&start=' + (nextPage - 1) * 7 + '&limit=7';
+            var home = 'http://' + req.headers.host + '/api/books/';
+
+            var start = req.query.start !== undefined ? parseInt(req.query.start) : null;
+            var limit = req.query.limit !== undefined ? parseInt(req.query.limit) : null;
+
+            var pagination = {
+                TotalPages: limit !== null ? Math.ceil(books.length / limit) - 1 : 1,
+                currentItems: limit !== null ? limit : books.length,
+                currentPage: (start !== null && limit !== null) ? Math.ceil(start / limit) : 1
+            };
+
+            var EpicResponseObject = {
+                items: [],
+                _links: {
+                    self: {
+                        href: home
+                    }
+                },
+                pagination: {
+                    totalItems: books.length,
+                    totalPages: pagination.totalPages,
+                    currentItems: pagination.currentItems,
+                    currentPage: pagination.currentPage,
+                    _links: {
+                        next: {
+                            page: pagination.currentPage + 1,
+                            href: home + '?start' + (start + pagination.currentItems) + '&limit=' + (limit || 0)
+                        },
+                        previous: {
+                            page: pagination.currentItems - 1,
+                            href: home + '?start=' + (start >= currentItems ? start - pagination.currentItems : 0) + '&limit=' + (limit || 0)
+                        },
+                        first: {
+                            page: 1,
+                            href: home + (limit ? '?limit=' + limit : '')
+                        },
+                        last: {
+                            page: pagination.totalPages,
+                            href: home + '?start' + books.length - limit
+                        }
+                    }
+                }
+            };
+            //Books
+            for (var i = start || 0, length = books.length, l = 0; i < length && (limit !== null ? l < limit : 1); i++, l++) {
+                EpicResponseObject.items.push({
+                    item: book,
+                    _links: {
+                        self: {
+                            href: home + book._id
+                        },
+                        collection: {
+                            href: home
+                        }
+                    }
+                });
             }
-            //Previous
-            var previousPage = currentPage - 1;
-            EpicResponseObject.pagination._links.previous = {};
-            if (previousPage < 1) {
-                EpicResponseObject.pagination._links.previous.page = 'Page 1';
-                EpicResponseObject.pagination._links.previous.href = 'http://' + req.headers.host + '/api/books/?page=1';
-            } else {
-                EpicResponseObject.pagination._links.previous.page = 'Page ' + previousPage;
-                EpicResponseObject.pagination._links.previous.href = 'http://' + req.headers.host + '/api/books/?page=' + previousPage + nextPage + '&start=' + (previousPage - 1) * 7 + '&limit=7';
-            }
-            //Response
-            res.json(EpicResponseObject);
         });
     };
     return {
