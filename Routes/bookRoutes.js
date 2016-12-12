@@ -46,7 +46,7 @@ var routes = function (Book) {
             res.json(returnBook);
         })
         .put(function (req, res) {
-            if (req.body.title !== null && req.body.author !== null && req.body.genre !== null) {
+            if (req.body.title !== null || req.body.author !== null || req.body.genre !== null) {
                 req.book.title = req.body.title;
                 req.book.author = req.body.author;
                 req.book.genre = req.body.genre;
