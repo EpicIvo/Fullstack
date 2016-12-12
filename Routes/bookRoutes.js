@@ -45,15 +45,9 @@ var routes = function (Book) {
             res.json(returnBook);
         })
         .put(function (req, res) {
-            console.log(req.body);
-            console.log(req.body.title);
-            console.log(req.body.author);
-            console.log(req.body.genre);
             if (!req.body.title || !req.body.author || !req.body.genre ) {
-                console.log('Empty');
                 res.sendStatus(418).json({message: 'cannot leave anything empty'});
             }else{
-                console.log('Not empty');
                 req.book.title = req.body.title;
                 req.book.author = req.body.author;
                 req.book.genre = req.body.genre;
@@ -87,7 +81,7 @@ var routes = function (Book) {
                 if (err)
                     res.sendStatus(500).send(err);
                 else {
-                    res.sendStatus(204).json({message: 'Removed'});
+                    res.sendStatus(204).send('Removed');
                 }
             });
         });
