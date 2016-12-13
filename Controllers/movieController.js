@@ -45,11 +45,11 @@ var movieController = function (Movie) {
                     _links: {
                         next: {
                             page: pagination.totalPages !== pagination.currentPage ? pagination.currentPage + 1 : pagination.currentPage,
-                            href: home + '?start=' + (start + pagination.currentItems) + '&limit=' + (limit || 0)
+                            href: home + '?start=' + (start + pagination.currentItems) + '&limit=' + (limit || 5)
                         },
                         previous: {
                             page: (pagination.currentPage !== 1 ? pagination.currentPage - 1 : 1),
-                            href: home + '?start=' + (start >= pagination.currentItems ? start - pagination.currentItems : 0) + '&limit=' + (limit || 0)
+                            href: home + '?start=' + (start >= pagination.currentItems ? start - pagination.currentItems : 0) + '&limit=' + (limit || 5)
                         },
                         first: {
                             page: 1,
@@ -57,7 +57,7 @@ var movieController = function (Movie) {
                         },
                         last: {
                             page: pagination.totalPages,
-                            href: home + '?start=' + (limit ? (movies.length + 1) - limit : 0) + '&limit=' + (limit || 0)
+                            href: home + '?start=' + (limit ? (movies.length + 1) - limit : 0) + '&limit=' + (limit || 5)
                         }
                     }
                 }
