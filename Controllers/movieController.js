@@ -15,7 +15,7 @@ var movieController = function (Movie) {
         });
     };
     var get = function (req, res) {
-        var home = 'https://fullstack-s.herokuapp.com/api/books/';
+        var home = 'https://fullstack-s.herokuapp.com/api/movies/';
         Movie.find(function (err, movies) {
             if (err) {
                 return res.status(500).send(err);
@@ -57,7 +57,7 @@ var movieController = function (Movie) {
                         },
                         last: {
                             page: pagination.totalPages,
-                            href: home + '?start=' + (limit ? (books.length + 1) - limit : 0) + '&limit=' + (limit || 0)
+                            href: home + '?start=' + (limit ? (movies.length + 1) - limit : 0) + '&limit=' + (limit || 0)
                         }
                     }
                 }

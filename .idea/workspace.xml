@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c798000-4822-424e-9341-0cb063c70920" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Controllers/bookController.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Routes/bookRoutes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Tests/bookControllerTests.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Tests/bookIntegrationTests.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/bookModel.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -39,11 +33,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="movieController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="movieController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controllers/movieController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="54" column="14" lean-forward="true" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
+            <state relative-caret-position="82">
+              <caret line="51" column="14" lean-forward="true" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="alternative.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/alternative.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="29" lean-forward="false" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -73,7 +77,6 @@
         <option value="$PROJECT_DIR$/models/bookModel" />
         <option value="$PROJECT_DIR$/Tests/bookIntergrationTest.js" />
         <option value="$PROJECT_DIR$/Tests/bookControllerTests.js" />
-        <option value="$PROJECT_DIR$/alternative.json" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/package.json" />
@@ -83,6 +86,7 @@
         <option value="$PROJECT_DIR$/Routes/movieRoutes.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/Controllers/movieController.js" />
+        <option value="$PROJECT_DIR$/alternative.json" />
       </list>
     </option>
   </component>
@@ -321,12 +325,12 @@
       <workItem from="1481370360657" duration="11313000" />
       <workItem from="1481457614116" duration="7835000" />
       <workItem from="1481519458294" duration="17283000" />
-      <workItem from="1481605648237" duration="842000" />
+      <workItem from="1481605648237" duration="1201000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114463000" />
+    <option name="totallyTimeSpent" value="114822000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -709,7 +713,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/npm-debug.log" />
-    <entry file="file://$PROJECT_DIR$/alternative.json" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -773,8 +776,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/movieController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="54" column="14" lean-forward="true" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
+        <state relative-caret-position="82">
+          <caret line="51" column="14" lean-forward="true" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/alternative.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="29" lean-forward="false" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
           <folding />
         </state>
       </provider>
