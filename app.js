@@ -1,13 +1,7 @@
 var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser');
-var db;
-if (process.env.ENV == 'Test') {
     db = mongoose.connect('mongodb://ivo:password@ds111718.mlab.com:11718/fullstack');
-}
-else {
-    db = mongoose.connect('mongodb://ivo:password@ds111718.mlab.com:11718/fullstack');
-}
 
 var Movie = require('./models/movieModel');
 var app = express();
