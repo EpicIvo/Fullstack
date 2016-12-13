@@ -59,20 +59,20 @@ var routes = function (Movie) {
                 });
             }
         })
-        .patch(function (req, res) {
-            if (req.body._id)
-                delete req.body._id;
-            for (var p in req.body) {
-                req.movie[p] = req.body[p];
-            }
-            req.movie.save(function (err) {
-                if (err)
-                    res.status(500).send(err);
-                else {
-                    res.json(req.movie);
-                }
-            });
-        })
+        // .patch(function (req, res) {
+        //     if (req.body._id)
+        //         delete req.body._id;
+        //     for (var p in req.body) {
+        //         req.movie[p] = req.body[p];
+        //     }
+        //     req.movie.save(function (err) {
+        //         if (err)
+        //             res.status(500).send(err);
+        //         else {
+        //             res.json(req.movie);
+        //         }
+        //     });
+        // })
         .delete(function (req, res) {
             req.movie.remove(function (err) {
                 if (err)
