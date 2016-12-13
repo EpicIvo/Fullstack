@@ -1,10 +1,10 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var bookModel = new Schema({
+var movieModel = new Schema({
     title: String,
-    author: String,
+    director: String,
     genre: String
 });
 
-module.exports = mongoose.model('Book', bookModel);
+module.exports = mongoose.model('Book', movieModel);

@@ -1,13 +1,13 @@
-var bookController = function (Book) {
+var movieController = function (Movie) {
     var post = function (req, res) {
-        var book = new Book();
-        book.author = req.body.author;
-        book.genre = req.body.genre;
-        book.title = req.body.title;
-        if (book.title == null || book.author == null || book.genre == null) {
-            return res.status(400).send("Keine empty fields BITTE!");
+        var movie = new Movie();
+        movie.title = req.body.title;
+        movie.director = req.body.director;
+        movie.genre = req.body.genre;
+        if (movie.title == null || movie.director == null || movie.genre == null) {
+            return res.status(400).send("Cannot take empty fields");
         }
-        book.save(function (err) {
+        movie.save(function (err) {
             if (err) {
                 console.log(err);
             }
@@ -16,7 +16,7 @@ var bookController = function (Book) {
     };
     var get = function (req, res) {
         var home = 'https://fullstack-s.herokuapp.com/api/books/';
-        Book.find(function (err, books) {
+        Movie.find(function (err, movies) {
             if (err) {
                 return res.status(500).send(err);
             }
@@ -26,8 +26,8 @@ var bookController = function (Book) {
                 start = 1;
             }
             var pagination = {
-                totalPages: limit !== null ? Math.ceil(books.length / limit) : 1,
-                currentItems: limit !== null ? limit : books.length,
+                totalPages: limit !== null ? Math.ceil(movies.length / limit) : 1,
+                currentItems: limit !== null ? limit : movies.length,
                 currentPage: (start !== null && limit !== null) ? Math.ceil(start / limit) : 1
             };
             var EpicResponseObject = {
@@ -38,7 +38,7 @@ var bookController = function (Book) {
                     }
                 },
                 pagination: {
-                    totalItems: books.length,
+                    totalItems: movies.length,
                     totalPages: pagination.totalPages,
                     currentItems: pagination.currentItems,
                     currentPage: pagination.currentPage,
@@ -62,13 +62,13 @@ var bookController = function (Book) {
                     }
                 }
             };
-            for (var i = start || 0, length = books.length, l = 0; i < length && (limit !== null ? l < limit : 1); i++, l++) {
-                var oneBook = books[i];
+            for (var i = start || 0, length = movies.length, l = 0; i < length && (limit !== null ? l < limit : 1); i++, l++) {
+                var movie = movies[i];
                 EpicResponseObject.items.push({
-                    item: oneBook,
+                    item: movie,
                     _links: {
                         self: {
-                            href: home + oneBook._id
+                            href: home + movie._id
                         },
                         collection: {
                             href: home
@@ -85,4 +85,4 @@ var bookController = function (Book) {
     };
 };
 
-module.exports = bookController;
+module.exports = movieController;

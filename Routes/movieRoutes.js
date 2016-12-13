@@ -1,60 +1,60 @@
 var express = require('express');
 
-var routes = function (Book) {
-    var bookRouter = express.Router();
+var routes = function (Movie) {
+    var movieRouter = express.Router();
 
-    var bookController = require('../Controllers/bookController')(Book);
-    bookRouter.route('/')
-        .post(bookController.post)
-        .get(bookController.get)
+    var movieController = require('../Controllers/movieController')(Movie);
+    movieRouter.route('/')
+        .post(movieController.post)
+        .get(movieController.get)
         .options(function (err, res) {
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
             res.send(200);
         });
-    bookRouter.use('/:bookId', function (req, res, next) {
-        Book.findById(req.params.bookId, function (err, book) {
+    movieRouter.use('/:movieId', function (req, res, next) {
+        Movie.findById(req.params.movieId, function (err, movie) {
             if (err)
                 res.status(500).send(err);
-            else if (book) {
-                req.book = book;
+            else if (movie) {
+                req.movie = movie;
                 next();
             }
             else {
-                res.status(404).send('no book found');
+                res.status(404).send('No movie found');
             }
         });
     });
-    bookRouter.route('/:bookId')
+    movieRouter.route('/:movieId')
         .options(function (err, res) {
             res.header('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS');
             res.header('Accept', 'application/json');
             res.send(200);
         })
         .get(function (req, res) {
-            var home = 'https://fullstack-s.herokuapp.com/api/books/';
-            var returnBook = req.book.toJSON();
-            returnBook._links = {
+            var home = 'https://fullstack-s.herokuapp.com/api/movies/';
+            var returnMovie = req.movie.toJSON();
+            returnMovie._links = {
                 self: {
-                    href: home + returnBook._id
+                    href: home + returnMovie._id
                 },
                 collection: {
                     href: home
                 }
             };
-            res.json(returnBook);
+            res.json(returnMovie);
         })
         .put(function (req, res) {
-            if (!req.body.title || !req.body.author || !req.body.genre ) {
+            if (!req.body.title || !req.body.director || !req.body.genre ) {
                 res.status(418).json({message: 'cannot leave anything empty'});
             }else{
-                req.book.title = req.body.title;
-                req.book.author = req.body.author;
-                req.book.genre = req.body.genre;
-                req.book.save(function (err) {
+                req.movie.title = req.body.title;
+                req.movie.director = req.body.director;
+                req.movie.genre = req.body.genre;
+                req.movie.save(function (err) {
                     if (err)
                         res.status(500).send(err);
                     else {
-                        res.json(req.book);
+                        res.json(req.movie);
                     }
                 });
             }
@@ -63,18 +63,18 @@ var routes = function (Book) {
             if (req.body._id)
                 delete req.body._id;
             for (var p in req.body) {
-                req.book[p] = req.body[p];
+                req.movie[p] = req.body[p];
             }
-            req.book.save(function (err) {
+            req.movie.save(function (err) {
                 if (err)
                     res.status(500).send(err);
                 else {
-                    res.json(req.book);
+                    res.json(req.movie);
                 }
             });
         })
         .delete(function (req, res) {
-            req.book.remove(function (err) {
+            req.movie.remove(function (err) {
                 if (err)
                     res.status(500).send(err);
                 else {
@@ -82,7 +82,7 @@ var routes = function (Book) {
                 }
             });
         });
-    return bookRouter;
+    return movieRouter;
 };
 
 
