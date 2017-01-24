@@ -14,9 +14,9 @@ app.use(function (req, res, next) {
     res.header('Accept', 'application/json');
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Header', 'Content-Type, header');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, PATCH, DELETE, OPTIONS');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header('Allow', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    res.header('Allow', 'GET, PUT, PATCH, DELETE, OPTIONS');
     if (!req.accepts('json')) {
         res.status(400);
         return res.send("Only json is accepted");
