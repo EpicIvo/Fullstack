@@ -1,7 +1,7 @@
 var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser');
-    db = mongoose.connect('mongodb://ivo:password@ds111718.mlab.com:11718/fullstack');
+db = mongoose.connect('mongodb://ivo:password@ds111718.mlab.com:11718/fullstack');
 
 var Movie = require('./models/movieModel');
 var app = express();
@@ -11,12 +11,15 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
-   if(!req.accepts('json')){
-       res.status(400);
-       return res.send("Only json is accepted");
-   }else{
-       next();
-   }
+    res.header('Access-Control-Allow-Origin', 'POST, GET, OPTIONS, HEADERS');
+    res.header('Access-Control-Allow-Header', 'POST, GET, OPTIONS, HEADERS');
+    res.header('Allow', 'POST, GET, OPTIONS, HEADERS');
+    if (!req.accepts('json')) {
+        res.status(400);
+        return res.send("Only json is accepted");
+    } else {
+        next();
+    }
 });
 
 movieRouter = require('./Routes/movieRoutes')(Movie);
