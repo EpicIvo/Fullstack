@@ -28,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
-              <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+              <caret line="18" column="51" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -37,8 +37,8 @@
       <file leaf-file-name="movieRoutes.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Routes/movieRoutes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="64" lean-forward="false" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="64" />
+            <state relative-caret-position="350">
+              <caret line="66" column="59" lean-forward="false" selection-start-line="66" selection-start-column="59" selection-end-line="66" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -328,7 +328,7 @@
       <workItem from="1481623424326" duration="366000" />
       <workItem from="1481640786680" duration="2748000" />
       <workItem from="1481804549859" duration="698000" />
-      <workItem from="1485255817249" duration="8394000" />
+      <workItem from="1485255817249" duration="8506000" />
     </task>
     <task id="LOCAL-00001" summary="Changed allow header">
       <created>1485256581033</created>
@@ -631,11 +631,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485288972571</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Changed allow header">
+      <created>1485289165817</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1485289165817</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127757000" />
+    <option name="totallyTimeSpent" value="127869000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1065,15 +1072,15 @@
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
-          <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+          <caret line="18" column="51" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Routes/movieRoutes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="64" lean-forward="false" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="64" />
+        <state relative-caret-position="350">
+          <caret line="66" column="59" lean-forward="false" selection-start-line="66" selection-start-column="59" selection-end-line="66" selection-end-column="59" />
           <folding />
         </state>
       </provider>
