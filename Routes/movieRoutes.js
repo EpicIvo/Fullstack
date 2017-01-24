@@ -26,8 +26,6 @@ var routes = function (Movie) {
     });
     movieRouter.route('/:movieId')
         .options(function (err, res) {
-            res.header('Access-Control-Allow-Methods', 'GET, PUT, PATCH, DELETE, OPTIONS');
-            //res.header('Accept', 'application/json');
             res.send(200);
         })
         .get(function (req, res) {
