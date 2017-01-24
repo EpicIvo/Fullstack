@@ -9,6 +9,7 @@ var routes = function (Movie) {
         .get(movieController.get)
         .options(function (err, res) {
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+            res.header('Allow', 'POST, GET, OPTIONS');
             res.send(200);
         });
     movieRouter.use('/:movieId', function (req, res, next) {
@@ -59,20 +60,6 @@ var routes = function (Movie) {
                 });
             }
         })
-        // .patch(function (req, res) {
-        //     if (req.body._id)
-        //         delete req.body._id;
-        //     for (var p in req.body) {
-        //         req.movie[p] = req.body[p];
-        //     }
-        //     req.movie.save(function (err) {
-        //         if (err)
-        //             res.status(500).send(err);
-        //         else {
-        //             res.json(req.movie);
-        //         }
-        //     });
-        // })
         .delete(function (req, res) {
             req.movie.remove(function (err) {
                 if (err)
