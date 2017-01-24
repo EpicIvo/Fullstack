@@ -63,7 +63,7 @@ var routes = function (Movie) {
             });
         })
         .options(function (err, res) {
-            res.header('Allow', 'GET, POST, OPTIONS, HEADER');
+            res.header('Allow', 'DELETE', 'GET', 'HEAD', 'PUT', 'POST');
             res.send(200);
         });
 
