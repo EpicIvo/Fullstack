@@ -14,7 +14,6 @@ app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', 'https://fullstack-s.herokuapp.com/api/movies');
     res.header('Access-Control-Allow-Header', 'Content-Type, header');
     res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, HEADERS');
-    res.header('Allow', 'POST, GET, PUT, PATCH, HEADERS');
     if (!req.accepts('json')) {
         res.status(400);
         return res.send("Only json is accepted");
