@@ -6,7 +6,10 @@ var routes = function (Movie) {
     var movieController = require('../Controllers/movieController')(Movie);
     movieRouter.route('/')
         .post(movieController.post)
-        .get(movieController.get);
+        .get(movieController.get)
+        .options(function (err, res) {
+            res.send(200);
+        });
     movieRouter.use('/:movieId', function (req, res, next) {
         Movie.findById(req.params.movieId, function (err, movie) {
             if (err)
@@ -21,9 +24,6 @@ var routes = function (Movie) {
         });
     });
     movieRouter.route('/:movieId')
-        .options(function (err, res) {
-            res.send(200);
-        })
         .get(function (req, res) {
             var home = 'https://fullstack-s.herokuapp.com/api/movies/';
             var returnMovie = req.movie.toJSON();
@@ -38,9 +38,9 @@ var routes = function (Movie) {
             res.json(returnMovie);
         })
         .put(function (req, res) {
-            if (!req.body.title || !req.body.director || !req.body.genre ) {
+            if (!req.body.title || !req.body.director || !req.body.genre) {
                 res.status(418).json({message: 'cannot leave anything empty'});
-            }else{
+            } else {
                 req.movie.title = req.body.title;
                 req.movie.director = req.body.director;
                 req.movie.genre = req.body.genre;
@@ -61,7 +61,11 @@ var routes = function (Movie) {
                     res.status(204).send('Removed');
                 }
             });
+        })
+        .options(function (err, res) {
+            res.send(200);
         });
+
     return movieRouter;
 };
 
