@@ -22,12 +22,6 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Credentials", false);
     res.header("Access-Control-Max-Age", "86400");
     res.header("Access-Control-Allow-Headers", "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept");
-    if ('OPTIONS' == req.method) {
-        res.send(200);
-    }
-    else {
-        next();
-    }
     if (!req.accepts('json')) {
         res.status(400);
         return res.send("Only json is accepted");
