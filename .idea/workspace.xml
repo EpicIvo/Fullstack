@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8c798000-4822-424e-9341-0cb063c70920" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Routes/movieRoutes.js" afterPath="$PROJECT_DIR$/Routes/movieRoutes.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,21 +24,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="73" lean-forward="false" selection-start-line="21" selection-start-column="73" selection-end-line="21" selection-end-column="73" />
+            <state relative-caret-position="450">
+              <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="movieRoutes.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="movieRoutes.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Routes/movieRoutes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="28" column="81" lean-forward="true" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="81" />
+            <state relative-caret-position="150">
+              <caret line="10" column="81" lean-forward="false" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
               <folding />
             </state>
           </provider>
@@ -113,8 +113,8 @@
         <option value="$PROJECT_DIR$/alternative.json" />
         <option value="$PROJECT_DIR$/Referentiecode" />
         <option value="$PROJECT_DIR$/Controllers/movieController.js" />
-        <option value="$PROJECT_DIR$/Routes/movieRoutes.js" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/Routes/movieRoutes.js" />
       </list>
     </option>
   </component>
@@ -328,14 +328,7 @@
       <workItem from="1481623424326" duration="366000" />
       <workItem from="1481640786680" duration="2748000" />
       <workItem from="1481804549859" duration="698000" />
-      <workItem from="1485255817249" duration="12003000" />
-    </task>
-    <task id="LOCAL-00014" summary="Changed allow header">
-      <created>1485269685572</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1485269685572</updated>
+      <workItem from="1485255817249" duration="12119000" />
     </task>
     <task id="LOCAL-00015" summary="Changed allow header">
       <created>1485269786990</created>
@@ -673,11 +666,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485346219733</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Changed allow header">
+      <created>1485346383980</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1485346383980</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131366000" />
+    <option name="totallyTimeSpent" value="131482000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1104,18 +1104,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Routes/movieRoutes.js">
+    <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="28" column="81" lean-forward="true" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="81" />
+        <state relative-caret-position="450">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
+    <entry file="file://$PROJECT_DIR$/Routes/movieRoutes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="73" lean-forward="false" selection-start-line="21" selection-start-column="73" selection-end-line="21" selection-end-column="73" />
+        <state relative-caret-position="150">
+          <caret line="10" column="81" lean-forward="false" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
           <folding />
         </state>
       </provider>
