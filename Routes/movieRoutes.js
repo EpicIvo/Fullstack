@@ -6,11 +6,11 @@ var routes = function (Movie) {
     var movieController = require('../Controllers/movieController')(Movie);
     movieRouter.route('/')
         .post(movieController.post)
-        .get(movieController.get)
-        .options(function (err, res) {
-            res.header('Allow', 'GET, POST, OPTIONS, HEADER');
-            res.send(200);
-        });
+        .get(movieController.get);
+        // .options(function (err, res) {
+        //     res.header('Allow', 'GET, POST, OPTIONS, HEADER');
+        //     res.send(200);
+        // });
     movieRouter.use('/:movieId', function (req, res, next) {
         Movie.findById(req.params.movieId, function (err, movie) {
             if (err)
