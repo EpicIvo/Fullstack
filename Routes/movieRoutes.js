@@ -8,7 +8,7 @@ var routes = function (Movie) {
         .post(movieController.post)
         .get(movieController.get)
         .options(function (err, res) {
-            res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS, HEADER');
+            res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
             res.send(200);
         });
     movieRouter.use('/:movieId', function (req, res, next) {
