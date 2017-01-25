@@ -8,7 +8,7 @@ var routes = function (Movie) {
         .post(movieController.post)
         .get(movieController.get)
         .options(function (err, res) {
-            res.header('Allow', 'GET, POST, OPTIONS, HEADER');
+            res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
             res.send(200);
         });
     movieRouter.use('/:movieId', function (req, res, next) {
@@ -25,6 +25,11 @@ var routes = function (Movie) {
         });
     });
     movieRouter.route('/:movieId')
+        .options(function (err, res) {
+            res.header('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS');
+            res.header('Accept', 'application/json');
+            res.send(200);
+        })
         .get(function (req, res) {
             var home = 'https://fullstack-s.herokuapp.com/api/movies/';
             var returnMovie = req.movie.toJSON();
@@ -63,11 +68,6 @@ var routes = function (Movie) {
                 }
             });
         });
-        // .options(function (err, res) {
-        //     res.header('Allow', 'GET, POST, OPTIONS, HEADER');
-        //     res.send(200);
-        // });
-
     return movieRouter;
 };
 
