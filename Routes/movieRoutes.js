@@ -62,11 +62,11 @@ var routes = function (Movie) {
                     res.status(204).send('Removed');
                 }
             });
-        })
-        .options(function (err, res) {
-            res.header('Allow', 'GET, POST, OPTIONS, HEADER');
-            res.send(200);
         });
+        // .options(function (err, res) {
+        //     res.header('Allow', 'GET, POST, OPTIONS, HEADER');
+        //     res.send(200);
+        // });
 
     return movieRouter;
 };
