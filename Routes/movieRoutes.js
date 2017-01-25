@@ -9,6 +9,7 @@ var routes = function (Movie) {
         .get(movieController.get)
         .options(function (err, res) {
             res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+            res.header('Allow', 'POST, GET, OPTIONS');
             res.send(200);
         });
     movieRouter.use('/:movieId', function (req, res, next) {
@@ -27,6 +28,7 @@ var routes = function (Movie) {
     movieRouter.route('/:movieId')
         .options(function (err, res) {
             res.header('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS');
+            res.header('Allow', 'GET, PUT, DELETE, OPTIONS');
             res.header('Accept', 'application/json');
             res.send(200);
         })
